@@ -1,0 +1,944 @@
+@extends('layouts.dashboardMain')
+
+@section('style')
+
+<style type="text/css">
+   .custom-modal .form-group {
+       margin-bottom: 0.8rem;
+   }
+
+   .multiselect-container>li>a>label {
+  padding: 4px 20px 3px 20px;
+}
+html {  
+      scroll-behavior: smooth;  
+}
+
+html {  
+      scroll-behavior: smooth;  
+}
+
+
+   
+</style>
+
+@endsection
+
+@section('content')
+<div class="page-body-wrapper">
+      @include('frontend.menu.sidebar')
+      <div class="page-body">
+         <div class="p-0-30">
+            <div class="dash-inne-main-top">
+               <h5 class="sub-heading mb-40" id="myChallenge">
+                  Activity Logging Dashboard
+               </h5>
+               <p>Manually Log your daily activities directly to the calendar and apply your miles to your active challenges.</p>
+            </div>
+         </div>
+         @if($errors->any())
+           
+            <p><strong>Error!</strong> {{$errors->first()}} </p>
+             
+         @endif
+         <!-- <div class="map-filter-top p-0-30">
+            <div class="filter-bx">
+               <span>Filter</span>
+               <div class="custom-slect-bx">
+                  <select name="" id="" class="form-control">
+                     <option value="Week">Week</option>
+                     <option value="Month">Month</option>
+                     <option value="Year">Year</option>
+                  </select>
+               </div>
+             
+            </div>
+         </div> -->
+         <div class="calander-container p-0-30">
+            <!-- <figure><img class="mw-100" src="{{ asset('assets/images/calender-main.png') }}" alt=""></figure> -->
+            <div id='calendar'></div>
+         </div>
+         <div class="activity-stats-wrp-top sec-spacing p-0-30">
+            <h5 class="sub-heading mb-40">
+               Activity Stats
+            </h5>
+            <div class="activity-stats-row">
+               
+               <div class="activity-box-wrp">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/currentweek.png') }}" alt=""></span>
+                     <h5>Current Week</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($weekDistance, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+               <div class="activity-box-wrp">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/currentmonth.png') }}" alt=""></span>
+                     <h5>Current Month</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($monthDistance, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+               <div class="activity-box-wrp">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/currentyear.png') }}" alt=""></span>
+                     <h5>Current Year</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($yearDistance, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+               <div class="activity-box-wrp" id="myChallenge">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/totalmilage.png') }}" alt=""></span>
+                     <h5>Total Mileage</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($totalDistancreTravel, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+               <div class="activity-box-wrp">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/miles.png') }}"alt=""></span>
+                     <h5>Miles Until Next Milestone</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                    
+                     <div class="circle-progress mx-auto mt-4" data-value='{{$badgeLimit}}'>
+                        <span class="progress-left">
+                                      <span class="progress-bar border-danger"></span>
+                        </span>
+                        <span class="progress-right">
+                                      <span class="progress-bar border-danger"></span>
+                        </span>
+                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                          <div class="h2">{{round($badgeLimit, 2)}} mi </div>
+                        </div>
+                      </div>
+                </div>
+               </div>
+               <div class="activity-box-wrp" id="myChallenge">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/totalmilage.png') }}" alt=""></span>
+                     <h5>Best Day</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($distanceOfTheDay, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+               <div class="activity-box-wrp" id="myChallenge">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/totalmilage.png') }}" alt=""></span>
+                     <h5>Best Week</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($bestOfWeek, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+               <div class="activity-box-wrp" id="myChallenge">
+                  <div class="activity-top-head d-flex">
+                     <span class="icon"><img src="{{ asset('assets/images/totalmilage.png') }}" alt=""></span>
+                     <h5>Best Month</h5>
+                  </div>
+                  <div class="activity-mile-status">
+                     <h6>{{round($bestMonth, 2)}} Miles</h6>
+                     <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="complete_challenge-sec grey-bg sec-spacing  p-0-30" >
+            <h5 class="sub-heading mb-40" id="myChallenge">
+               Active & Completed Challenges
+            </h5>
+            <div class="challenge-milestone-row">
+               <?php 
+               $i = 1;
+                   foreach($info as $key => $val){
+                     //if($i <= 3){
+                      $value = $val['challenges'];
+                      //$challengeAssign = $User_challenges->checkChallengeAssign($user_id, $value->id);
+                      ?>
+                         <div class="milestone-box">
+                           <a class="nav-link challengeView" href="{{route('frontend.challenge_details', $value->id)}}">
+                              <figure class="milestone-img-wrp">
+                                 <img src="{{url($value->image)}}" alt="">
+                                 
+                              </figure>
+                              <div class="milestone-info-box">
+                                 <div class="milestone-name-bx">
+                                    <h3>{{$value->name}}</h3>
+                                 </div>                     
+                              </div>
+                           </a>
+                             
+                         </div>
+                      <?php
+                     //}
+                      $i++;
+                   }
+                ?>
+            </div>
+            <!-- <div class="join-race-wrp clearfix mt-5 text-center">
+               <a href="{{ route('frontend.my_challenge') }}" class="theme-btn green-btn">  My Challenge </a>
+            
+            </div> -->
+            
+         </div>
+         <div class="dash-badges-sec sec-spacing p-0-30">
+            <h5 class="sub-heading mb-30">
+               Challenge Badges
+            </h5>
+            <div class="content-blog">
+               <p>
+                  
+               </p>
+            </div>
+            <div class="challenge-milestone-row four-box">
+               <?php
+                    $badges = json_encode($badges);
+                    $badges = json_decode($badges, true);
+                    if($badges){
+                       foreach($badges as $key => $value){ 
+                        $badgeAssign = $User_badges->checkBadgeAssign($user_id, $value['id']);
+                        ?>
+                          <div class="milestone-box">
+                              <figure class="milestone-img-wrp">
+                                 <img class="milestone_main__image"  src="{{url($value['badge_logo'])}}" alt="">
+                                 @if($badgeAssign)
+                                    <img class="milestone_main__tick" src="{{ asset('assets/images/Blue tickk.png') }}" width="50" height="50">
+                                 @endif
+                              </figure>
+                              <div class="milestone-info-box d-flex justify-content-between">
+                                 <div class="milestone-name-bx">
+                                    <h3>{{$value['badge_name']}}</h3>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                        <?php
+ 
+                       }
+                    }else{
+                     echo "No data found!";
+                    }
+                    
+               ?>
+               
+               
+            </div>
+         </div>
+      </div>
+   </div>
+
+ 
+
+<div class="modal fade custom-modal" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true" style="left: 10%;">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content" style="width:75%;padding: 0;">
+       <div class="modal-header d-block" style="padding: 0;">
+        <!-- <div class="modal-top text-center">
+         <h5 class="modal-title">Add Logs</h5>
+         
+        </div> -->
+         <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+         </button>
+       </div>
+       <div class="modal-body">
+         @if($errors->any())
+           
+            <p><strong>Error!</strong> {{$errors->first()}} </p>
+             
+         @endif
+         <form action="{{ route('frontend.update_challenge_log') }}" method="post" class="login-form" id="update-challenge-log-form">
+            {{ csrf_field() }}
+            {{ method_field('put') }}
+            <input type="hidden" name="challenge_id" id="updateChallenge_id" value="" readonly>
+            <div class="manual-add-tab">
+               <div class="activity-details-wrp">
+                  <div class="activity-head">
+                      <h3>Edit Log</h3>
+                      <!-- <span>Donec commodo posuere.</span> -->
+                  </div>
+                  <div class="acitivity-info-bx">
+                     <div class="form-group">
+                         <label for="">Challenge(s)</label>
+                         <div class="custom-slect-bx">
+                           <input type="text" id="viewChallenges" value="">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Activity</label>
+                         <div class="custom-slect-bx">
+                           <select name="activity" id="viewActivity" class="form-control">
+                              <option value="running" >Running</option>
+                              <option value="walking" >Walking</option>
+                              <option value="cycling" >Cycling</option>
+                              <option value="hiking" >Hiking</option>
+                              <option value="swim" >Swim</option>
+                              <option value="rowing" >Rowing</option>
+                              <option value="cross_country_skiing" >Cross Country Skiing</option>
+                              <option value="snowshoe" >Snowshoe</option>
+                              <option value="elliptical" >Elliptical</option>
+                              <option value="treadmill" >Treadmill</option>
+                              <option value="stationary_bike" >Stationary Bike</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Activity start date & time </label>
+                        <div class="icon-wrp-input">
+                           <!-- <input type="text" name="startDateTime" id="startDateTime" class="form-control" placeholder="09-08-2020  2:19 PM " value="">
+                           <span class="icon-input material-icons-outlined">
+                           calendar_today
+                           </span> -->
+
+                           <div class='input-group date' >
+                              <input type='datetime-local' name="startDateTime" id="date_start_time"  class="form-control" max="{{\Carbon\Carbon::now()->toDateTimeString()}}"  value="" />
+                              <span class="input-group-addon" >
+                                 <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                           </div>
+
+                           <!-- <input type="text" name="startDateTime" id="date_start_time" class="form-control datetimepicker-input startDateTime" value="" readonly> -->
+
+                           <!-- <div class="input-group date" id="startDateTime1" data-target-input="nearest">
+                              <input type="text" name="startDateTime" id="date_start_time" class="form-control datetimepicker-input" data-target="#startDateTime1" value="">
+                              <div class="input-group-append" data-target="#startDateTime1" data-toggle="datetimepicker">
+                                 <div class="input-group-text" style="height: 100%;"><i class="fa fa-calendar"></i></div>
+                              </div>
+                           </div> -->
+
+                        </div>
+                     <div class="form-group">
+                        <label for="">Distance In Miles</label>
+                        <input type="number" id="distance" min="0" step=0.01 name="distance">
+                     </div>
+                     <div class="form-group">
+                       <div class="time-ingo-row">
+                        <div class="info-time">
+                           <label for="">Hours</label>
+                           <input type="number" id="hour" min="0" max="24" name="hour">
+                        </div>
+                        <div class="info-time">
+                           <label for="">Minutes</label>
+                           <input type="number" min="0" id="minute" max="59" name="minute">
+                        </div>
+                        <div class="info-time">
+                           <label for="">Seconds</label>
+                           <input type="number" min="0" max="59" id="second" name="second">
+                        </div>
+                       </div>
+                       
+                     </div>
+
+                     <div class="form-group">
+                        <label for="">Calories</label>
+                        <input type="number" step=0.01 min="0" id="viewCalories" class="form-control" name="calories">
+                     </div>
+                     
+                           <div class="form-group">
+                              <div class="save-add-log1">
+                                 <button class="theme-btn green-btn">Save</button>
+                                 
+                              </div>
+                           </div>
+                        
+                     
+                    </div>
+                    
+                 </div>
+                  </div>
+                </div>
+          </form>
+
+          
+            <form action="{{ route('frontend.delete_challenge_log') }}" method="post" class="login-form" id="delete-challenge-log">
+               {{ csrf_field() }}
+               {{ method_field('delete') }}
+               <input type="hidden" name="challenge_id" id="deleteChallenge_id" value="">
+               <div class="form-group">
+                  <div class="save-add-log1" style="text-align: center;">
+                     <button class="theme-btn green-btn" id="delete-challenge-log-button" style="width: 75%;">Delete</button>
+                  </div>
+               </div>
+            </form>
+         
+          
+       </div>
+       
+     </div>
+   </div>
+</div>
+
+<div class="modal fade custom-modal" id="viewStravaModal" tabindex="-1" aria-labelledby="viewStravaModalLabel" aria-hidden="true" style="left: 10%;">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content" style="width:75%;padding: 0;">
+       <div class="modal-header d-block" style="padding: 0;">
+        <!-- <div class="modal-top text-center">
+         <h5 class="modal-title">Add Logs</h5>
+         
+        </div> -->
+         <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+         </button>
+       </div>
+       <div class="modal-body">
+         @if($errors->any())
+           
+            <p><strong>Error!</strong> {{$errors->first()}} </p>
+             
+         @endif
+         <form action="" method="post" class="login-form" id="update-strava-challenge-log-form">
+           
+            <div class="manual-add-tab">
+               <div class="activity-details-wrp">
+                  <div class="activity-head">
+                      <h3>View Log</h3>
+                      <!-- <span>Donec commodo posuere.</span> -->
+                  </div>
+                  <div class="acitivity-info-bx">
+                     <div class="form-group">
+                         <label for="">Device Type</label>
+                         <div class="custom-slect-bx">
+                           <input type="text" id="stravaChallenges" value="" readonly>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Activity</label>
+                         <div class="custom-slect-bx">
+                           <input type="text" id="stravaActivity" value="" readonly>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Activity start date & time </label>
+                        <div class="icon-wrp-input">
+                           <!-- <input type="text" name="startDateTime" id="startDateTime" class="form-control" placeholder="09-08-2020  2:19 PM " value="">
+                           <span class="icon-input material-icons-outlined">
+                           calendar_today
+                           </span> -->
+
+                           <div class='input-group date' >
+                              <input type='datetime-local'  id="strava_date_start_time"  class="form-control" value="" readonly/>
+                              
+                           </div>
+
+                           <!-- <input type="text" name="startDateTime" id="date_start_time" class="form-control datetimepicker-input startDateTime" value="" readonly> -->
+
+                           <!-- <div class="input-group date" id="startDateTime1" data-target-input="nearest">
+                              <input type="text" name="startDateTime" id="date_start_time" class="form-control datetimepicker-input" data-target="#startDateTime1" value="">
+                              <div class="input-group-append" data-target="#startDateTime1" data-toggle="datetimepicker">
+                                 <div class="input-group-text" style="height: 100%;"><i class="fa fa-calendar"></i></div>
+                              </div>
+                           </div> -->
+
+                        </div>
+                     <div class="form-group">
+                        <label for="">Distance In Miles</label>
+                        <input type="number" id="stravaDistance" min="0" step=0.01 readonly>
+                     </div>
+                     <div class="form-group">
+                       <div class="time-ingo-row">
+                        <div class="info-time">
+                           <label for="">Hours</label>
+                           <input type="number" id="stravaHour" min="0" max="24" readonly>
+                        </div>
+                        <div class="info-time">
+                           <label for="">Minutes</label>
+                           <input type="number" min="0" id="stravaMinute" max="59" readonly>
+                        </div>
+                        <div class="info-time">
+                           <label for="">Seconds</label>
+                           <input type="number" min="0" max="59" id="stravaSecond" readonly>
+                        </div>
+                       </div>
+                       
+                     </div>
+
+                     <div class="form-group">
+                        <label for="">Calories</label>
+                        <input type="number" step=0.01 min="0" id="stravaCaloriee" class="form-control" readonly>
+                     </div>
+                     
+                        
+                        
+                     
+                    </div>
+                    
+                 </div>
+                  </div>
+                </div>
+          </form>
+
+          
+            <form action="{{ route('frontend.delete_challenge_log') }}" method="post" class="login-form" id="delete-strava-challenge-log">
+               {{ csrf_field() }}
+               {{ method_field('delete') }}
+               <input type="hidden" name="challenge_id" id="deleteStravaChallenge_id" value="">
+               <div class="form-group">
+                  <div class="save-add-log1" style="text-align: center;">
+                     <button class="theme-btn green-btn" id="delete-challenge-log-button" style="width: 75%;">Delete</button>
+                  </div>
+               </div>
+            </form>
+         
+          
+       </div>
+       
+     </div>
+   </div>
+</div>
+
+<div class="modal fade custom-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="left: 10%;">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content" style="width:75%;padding: 0;">
+       <div class="modal-header d-block" style="padding: 0;">
+        <!-- <div class="modal-top text-center">
+         <h5 class="modal-title">Add Logs</h5>
+         
+        </div> -->
+         <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+         </button>
+       </div>
+       <div class="modal-body">
+         @if($errors->any())
+           
+            <p><strong>Error!</strong> {{$errors->first()}} </p>
+             
+         @endif
+         <form action="{{ route('frontend.add_challenge_log') }}" method="post" class="login-form" id="login-form">
+            {{ csrf_field() }}
+            <div class="manual-add-tab">
+               <div class="activity-details-wrp">
+                  <div class="activity-head">
+                      <h3>Input Log</h3>
+                      <!-- <span>Donec commodo posuere.</span> -->
+                  </div>
+                  <div class="acitivity-info-bx">
+                     <div class="form-group">
+                         <label for="">Challenge(s)</label>
+                         <div class="custom-slect-bx">
+                           <input type="hidden" name="challengeDetails" value="">
+                           <select name="challenges[]" id="challenges" multiple="multiple">
+                              <?php
+                                 foreach($challenges as $key => $val){
+                              ?>
+                                    <option value="{{$val->id}}" >{{$val->name}}</option>
+                              <?php
+
+                                 }
+                              ?>
+                           </select>
+                        </div>
+                        <label>Note: Please make sure to select a challenge before logging your miles.</label>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Activity</label>
+                         <div class="custom-slect-bx">
+                           <select name="activity" id="activity" class="form-control">
+                              <option value="running" >Running</option>
+                              <option value="walking" >Walking</option>
+                              <option value="cycling" >Cycling</option>
+                              <option value="hiking" >Hiking</option>
+                              <option value="swim" >Swim</option>
+                              <option value="rowing" >Rowing</option>
+                              <option value="cross_country_skiing" >Cross Country Skiing</option>
+                              <option value="snowshoe" >Snowshoe</option>
+                              <option value="elliptical" >Elliptical</option>
+                              <option value="treadmill" >Treadmill</option>
+                              <option value="stationary_bike" >Stationary Bike</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="">Activity start date & time </label>
+                        <div class="icon-wrp-input">
+                           <!-- <input type="text" name="startDateTime" id="startDateTime" class="form-control" placeholder="09-08-2020  2:19 PM " value="">
+                           <span class="icon-input material-icons-outlined">
+                           calendar_today
+                           </span> -->
+
+                           <div class='input-group date' >
+                              <input type='datetime-local' name="startDateTime" id="startDateTimeMax" max="{{\Carbon\Carbon::now()->toDateTimeString()}}"  class="form-control" value="" />
+                              <span class="input-group-addon" >
+                                 <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                           </div>
+                           <!-- <input type="text" name="startDateTime" class="form-control datetimepicker-input startDateTime" value="" readonly> -->
+                           
+
+                           <!-- <div class="input-group date" id="startDateTime" data-target-input="nearest">
+                              <input type="text" name="startDateTime" class="form-control datetimepicker-input" data-target="#startDateTime" value="">
+                              <div class="input-group-append" data-target="#startDateTime" data-toggle="datetimepicker">
+                                 <div class="input-group-text" style="height: 100%;"><i class="fa fa-calendar"></i></div>
+                              </div>
+                           </div> -->
+
+                        </div>
+                     <div class="form-group">
+                        <label for="">Distance In Miles</label>
+                        <input type="number" min="0" step=0.01 name="distance">
+                     </div>
+                     <div class="form-group">
+                       <div class="time-ingo-row">
+                        <div class="info-time">
+                           <label for="">Hours</label>
+                           <input type="number" min="0" max="24" name="hour">
+                        </div>
+                        <div class="info-time">
+                           <label for="">Minutes</label>
+                           <input type="number" min="0" max="59" name="minute">
+                        </div>
+                        <div class="info-time">
+                           <label for="">Seconds</label>
+                           <input type="number" min="0" max="59" name="second">
+                        </div>
+                       </div>
+                       
+                     </div>
+
+                     <div class="form-group">
+                        <label for="">Calories</label>
+                        <input type="number" step=0.01 min="0" class="form-control" name="calories">
+                     </div>
+                     <div class="form-group">
+                        <div class="save-add-log1">
+                           <button class="theme-btn green-btn">Save</button>
+                           
+                        </div>
+                     </div>
+                    </div>
+                    
+                 </div>
+                  </div>
+                </div>
+          </form>
+          
+       </div>
+       
+     </div>
+   </div>
+</div>
+
+<?php $logs = json_encode($logs); ?>
+      @endsection
+
+@section('script')
+
+<!-- <script src="{{ asset('assets/js/bootstrap-multiselect.min.js') }}"></script> -->
+<script src="{{ asset('assets/js/bootstrap-multiselect.js') }}"></script>
+
+
+<script>
+
+
+
+
+$(document).ready(function () {
+
+   $('#challenges').multiselect({
+        
+        includeSelectAllOption: true
+    });
+
+   var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd+'T23:59:59';
+document.getElementById("date_start_time").setAttribute("max", today);
+document.getElementById("startDateTimeMax").setAttribute("max", today);
+
+
+   $('form#delete-challenge-log').on('click', function(e) {
+         e.preventDefault();
+
+         $.confirm({
+                    title: 'A secure action',
+                    content: 'Are you sure to delete the selected record(s)',
+                    icon: 'fa fa-question-circle',
+                    animation: 'scale',
+                    closeAnimation: 'scale',
+                    opacity: 0.5,
+                    buttons: {
+                        'confirm': {
+                            text: 'Proceed',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                                $('form#delete-challenge-log').submit();
+                            }
+                        },
+                        cancel: function () {
+                           window.location.reload(true);
+                        },
+                        /*moreButtons: {
+                            text: 'something else',
+                            action: function () {
+                                return false;
+                            }
+                        },*/
+                    }
+                });
+
+      //$("#delete-challenge-log-button").click(function(){
+         /*var confirm = confirm("Are you sure?"); alert(confirm);
+         if (confirm == 'ok'){
+            $('form#delete-challenge-log').submit();
+         }
+         return false;*/
+      });
+
+   $('form#delete-strava-challenge-log').on('click', function(e) {
+         e.preventDefault();
+
+         $.confirm({
+                    title: 'A secure action',
+                    content: 'Are you sure to delete the selected record(s)',
+                    icon: 'fa fa-question-circle',
+                    animation: 'scale',
+                    closeAnimation: 'scale',
+                    opacity: 0.5,
+                    buttons: {
+                        'confirm': {
+                            text: 'Proceed',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                                $('form#delete-strava-challenge-log').submit();
+                            }
+                        },
+                        cancel: function () {
+                           window.location.reload(true);
+                        },
+                        /*moreButtons: {
+                            text: 'something else',
+                            action: function () {
+                                return false;
+                            }
+                        },*/
+                    }
+                });
+
+      //$("#delete-challenge-log-button").click(function(){
+         /*var confirm = confirm("Are you sure?"); alert(confirm);
+         if (confirm == 'ok'){
+            $('form#delete-challenge-log').submit();
+         }
+         return false;*/
+      });
+
+   
+var SITEURL = "{{ url('/') }}";
+  
+$.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+var data = '<?= $logs; ?>'; console.log(data);
+data = JSON.parse(data); console.log(data);
+
+var data = '<?= $logs; ?>'; //console.log(data);
+data = JSON.parse(data); //console.log(data);
+ 
+var calendar = $('#calendar').fullCalendar({
+                 timeZone: '{{$timezone}}',
+                 defaultView: 'month',
+            
+         header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'listYear,month,basicWeek,basicDay'
+         },
+                    eventSources: [data],
+                    events: '',
+                    displayEventTime: false,
+                    editable: true,
+                    eventRender: function (event, element, view) {
+                        if (event.allDay === 'true') {
+                                event.allDay = true;
+                        } else {
+                                event.allDay = false;
+                        }
+                    },
+                    selectable: true,
+                    selectHelper: true,
+                    select: function (start, end, allDay) {
+                        var start = $.fullCalendar.formatDate(start, "YYYY-MM-DD hh:mm"); 
+                        var start1 = start.split(' ');
+                        $("#startDateTimeMax").val(start1['0']+'T'+start1['1']);
+                        $('#exampleModal').modal();
+                        $('#exampleModal').css('opacity', 1);
+                        /*var title = prompt('Event Title:');
+                        if (title) {
+                            var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                            var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+                            $.ajax({
+                                url: SITEURL + "/fullcalenderAjax",
+                                data: {
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    type: 'add'
+                                },
+                                type: "POST",
+                                success: function (data) {
+                                    displayMessage("Event Created Successfully");
+  
+                                    calendar.fullCalendar('renderEvent',
+                                        {
+                                            id: data.id,
+                                            title: title,
+                                            start: start,
+                                            end: end,
+                                            allDay: allDay
+                                        },true);
+  
+                                    calendar.fullCalendar('unselect');
+                                }
+                            });
+                        }*/
+                    },
+                    eventDrop: function (event, delta) {
+                        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                        var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+  
+                        /*$.ajax({
+                            url: SITEURL + '/fullcalenderAjax',
+                            data: {
+                                title: event.title,
+                                start: start,
+                                end: end,
+                                id: event.id,
+                                type: 'update'
+                            },
+                            type: "POST",
+                            success: function (response) {
+                                displayMessage("Event Updated Successfully");
+                            }
+                        });*/
+                    },
+                    eventClick: function (event) { 
+                     var id = event.id; 
+                     var name = event.name;
+                     var device_name = event.device_name; 
+                     var athlete = event.athlete;
+                     var activity_id = event.activity_id;
+                     var activity = event.activity; 
+                     var calories = event.calories; 
+                     var endTime = event.endTime; 
+                     var distance_travelled = event.distance_travelled; 
+                     var start = event.start._i;  //console.log(start);
+                     var start1 = start.split(' ');
+                     var start2 = start1['1'].split(':');
+                     
+                     var endTime1 = '';
+                     //console.log(start1);
+                     if(endTime){
+                        var endTime1 = endTime.split(':');
+                     }
+                     
+                        if(event){ console.log(event);
+                            /*$('#activityView').val(activity);
+                            $('#challenge').val(name);
+                            $('#date_start_time').val(start);
+                            $('#distance').val(distance_travelled);
+                            $('#endTime').val(endTime);
+                            $('#calories').val(calories);*/
+                            if(device_name == 'strava' || device_name == 'fitbit' || device_name == 'Mapmyrun' || device_name == 'garmin'){
+                              $('#viewStravaModal').modal();
+                              $('#viewStravaModal').css('opacity', 1);
+
+                              $('#deleteStravaChallenge_id').val(id);
+                              
+
+                              $('#stravaChallenges').val(device_name);
+                              $('#stravaActivity').val(activity);
+                              $('#strava_date_start_time').val(start1['0']+'T'+start2['0']+':'+start2['1']);
+                              $('#stravaDistance').val(distance_travelled);
+                              if(endTime1){
+                                 $('#stravaHour').val(endTime1['0']);
+                                 $('#stravaMinute').val(endTime1['1']);
+                                 $('#stravaSecond').val(endTime1['2']);
+                              }
+                              $('#stravaCaloriee').val(calories);
+                            }else{
+                              $('#viewModal').modal();
+                              $('#viewModal').css('opacity', 1);
+
+                              $('#deleteChallenge_id').val(id);
+                              $('#updateChallenge_id').val(id);
+
+                              $('#viewChallenges').val(name);
+                              $('#viewActivity option[value='+activity+']').attr('selected', 'selected');
+                              $('input[name=startDateTime]').val(start1['0']+'T'+start2['0']+':'+start2['1']);
+                              $('#distance').val(distance_travelled);
+                              $('#hour').val(endTime1['0']);
+                              $('#minute').val(endTime1['1']);
+                              $('#second').val(endTime1['2']);
+                              $('#viewCalories').val(calories);
+                            }
+                            
+                        }
+                           
+                           
+                        /*var deleteMsg = confirm("Do you really want to delete?");
+                        if (deleteMsg) {
+                            $.ajax({
+                                type: "POST",
+                                url: SITEURL + '/fullcalenderAjax',
+                                data: {
+                                        id: event.id,
+                                        type: 'delete'
+                                },
+                                success: function (response) {
+                                    calendar.fullCalendar('removeEvents', event.id);
+                                    displayMessage("Event Deleted Successfully");
+                                }
+                            });
+                        }*/
+                    }
+ 
+                });
+ 
+});
+ 
+function displayMessage(message) {
+    toastr.success(message, 'Event');
+} 
+  
+</script>
+
+@endsection

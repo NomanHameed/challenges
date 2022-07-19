@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+
+class User_badges extends Model
+{
+	public function checkBadgeAssign($user_id, $badge_id){
+		
+		$ch = self::where([['badge_id', '=', $badge_id], ['user_id', '=', $user_id], ["badge_type", '!=', 'challenge_milestone']])->first();
+        $ch = json_encode($ch);
+        $ch = json_decode($ch, true);
+
+        $status = 0;
+        if($ch){
+        	$status = 1;
+        }
+        
+        return $status;
+	}
+    
+}

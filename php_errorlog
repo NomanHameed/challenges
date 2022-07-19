@@ -1,0 +1,19 @@
+[10-Feb-2022 13:47:01 UTC] PHP Fatal error:  require(): Failed opening required '/home/customer/www/tracker.challengeinmotion.com/public_html/vendor/autoload.php' (include_path='.:/usr/local/php74/pear') in /home/customer/www/tracker.challengeinmotion.com/public_html/artisan on line 18
+[17-Feb-2022 12:21:01 UTC] PHP Fatal error:  Uncaught ReflectionException: Class App\Console\Kernel does not exist in /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:809
+Stack trace:
+#0 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(809): ReflectionClass->__construct('App\\Console\\Ker...')
+#1 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(691): Illuminate\Container\Container->build('App\\Console\\Ker...')
+#2 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\Container\Container->resolve('App\\Console\\Ker...', Array, false)
+#3 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(269): Illuminate\Foundation\Application->resolve('App\\Console\\Ker...', Array, fal in /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 811
+[17-Feb-2022 12:21:01 UTC] PHP Fatal error:  Uncaught ReflectionException: Class App\Console\Kernel does not exist in /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:809
+Stack trace:
+#0 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(809): ReflectionClass->__construct('App\\Console\\Ker...')
+#1 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(691): Illuminate\Container\Container->build('App\\Console\\Ker...')
+#2 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\Container\Container->resolve('App\\Console\\Ker...', Array, false)
+#3 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(269): Illuminate\Foundation\Application->resolve('App\\Console\\Ker...', Array, fal in /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 811
+[29-Apr-2022 16:28:02 UTC] PHP Fatal error:  Uncaught ReflectionException: Class App\Console\Kernel does not exist in /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:809
+Stack trace:
+#0 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(809): ReflectionClass->__construct('App\\Console\\Ker...')
+#1 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(691): Illuminate\Container\Container->build('App\\Console\\Ker...')
+#2 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\Container\Container->resolve('App\\Console\\Ker...', Array, false)
+#3 /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(269): Illuminate\Foundation\Application->resolve('App\\Console\\Ker...', Array, fal in /home/customer/www/tracker.challengeinmotion.com/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 811
