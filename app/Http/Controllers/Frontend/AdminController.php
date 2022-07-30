@@ -2272,9 +2272,9 @@ class AdminController extends Controller
                 if($chLogByDate){
                     foreach($chLogByDate as $ke => $val){
                         $uc = $v2_challenges->where('id', '=', $val->participation_id)->first();
-                        $event_end_date = $uc->event_end_date;
+                        ;
 
-                        if($event_end_date){
+                        if($uc && $event_end_date = $uc->event_end_date){
                           $tempDate = explode(' ', $event_end_date);
                           $tempDate = explode('-', $tempDate['0']);
                           $stat = checkdate($tempDate[1], $tempDate[2], (int)$tempDate[0]);
