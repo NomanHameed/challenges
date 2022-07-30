@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Models\Challenge_logs;
+use App\Models\Challenges;
+use App\Models\User_challenges;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -36,4 +39,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function challenges()
+    {
+        return $this->belongsToMany(
+            Challenges::class,
+            'user_challenges',
+        'id',
+            'challenge_id');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(Challenge_logs::class);
+    }
 }
