@@ -51,7 +51,7 @@ use App\Mail\SuccessfulBadgeAchievement;
 
 class AdminController extends Controller
 {
-    
+
     /*public function __construct()
     {
         if (Auth::check() || Auth::viaRemember()) {
@@ -74,7 +74,7 @@ class AdminController extends Controller
           return redirect()->guest(route( 'frontend.home' ));
 
         }
-    } */   
+    } */
     /**
      * Display a listing of the resource.
      *
@@ -201,10 +201,10 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
@@ -212,7 +212,7 @@ class AdminController extends Controller
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
@@ -221,7 +221,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
         $Country_name = $country == 'usa' ? 'United States' : '';
@@ -237,7 +237,7 @@ class AdminController extends Controller
             }
         }
 
-        
+
 
 
         if(@$input['challenge_status']){
@@ -245,7 +245,7 @@ class AdminController extends Controller
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', $input['challenge_status']]])->groupBy('user_challenges.challenge_id')->get()->toArray();
 
         }else{
-            
+
             $challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('user_challenges.challenge_id')->get()->toArray();
         }
@@ -256,7 +256,7 @@ class AdminController extends Controller
         $current = 0;
         $past    = 0;
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         if($challenge){
@@ -266,7 +266,7 @@ class AdminController extends Controller
                 if($event_end_date <= Carbon::now($timezone)->toDateTimeString()){
                      $past = $past+1;
                 }elseif($event_end_date > Carbon::now($timezone)->toDateTimeString()){
-                     
+
                      $current = $current+1;
                 }
 
@@ -286,7 +286,7 @@ class AdminController extends Controller
 
         $MapMyRun_user = Mapmyrun_user_credentials::where('user_id', auth()->user()->id)->first();
         $MapMyRun_user1 = json_encode($MapMyRun_user);
-        $MapMyRun_user1 = json_decode($MapMyRun_user1, true);        
+        $MapMyRun_user1 = json_decode($MapMyRun_user1, true);
 
         $fitbit_user = FitbitUserCredential::where('user_id', auth()->user()->id)->first();
 
@@ -303,7 +303,7 @@ class AdminController extends Controller
         $arr['garmin_user'] = $garmin_user;
 
         return view('/frontend/manageDevice', $arr);
-        
+
     }
 
     public function TrophyCase(Request $request){
@@ -316,7 +316,7 @@ class AdminController extends Controller
 
         }
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         //echo env('CT_STRAVA_CLIENT_ID'); die();
@@ -335,10 +335,10 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
@@ -346,7 +346,7 @@ class AdminController extends Controller
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
@@ -355,7 +355,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
 
@@ -373,7 +373,7 @@ class AdminController extends Controller
             }
         }
 
-        
+
 
 
         if(@$input['challenge_status']){
@@ -381,7 +381,7 @@ class AdminController extends Controller
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', $input['challenge_status']]])->groupBy('user_challenges.challenge_id')->get()->toArray();
 
         }else{
-            
+
             $challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('user_challenges.challenge_id')->get()->toArray();
         }
@@ -392,7 +392,7 @@ class AdminController extends Controller
         $current = 0;
         $past    = 0;
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         if($challenge){
@@ -402,7 +402,7 @@ class AdminController extends Controller
                 if($event_end_date <= Carbon::now($timezone)->toDateTimeString()){
                      $past = $past+1;
                 }elseif($event_end_date > Carbon::now($timezone)->toDateTimeString()){
-                     
+
                      $current = $current+1;
                 }
 
@@ -422,7 +422,7 @@ class AdminController extends Controller
 
         $MapMyRun_user = Mapmyrun_user_credentials::where('user_id', auth()->user()->id)->first();
         $MapMyRun_user1 = json_encode($MapMyRun_user);
-        $MapMyRun_user1 = json_decode($MapMyRun_user1, true);        
+        $MapMyRun_user1 = json_decode($MapMyRun_user1, true);
 
         $fitbit_user = FitbitUserCredential::where('user_id', auth()->user()->id)->first();
 
@@ -435,7 +435,7 @@ class AdminController extends Controller
             //->join('user_badges', 'badges.id', '=', 'user_badges.badge_id')
             //->where([["user_badges.user_id", '=', auth()->user()->id]])
             ->orderBy('created_at', 'ASC')
-            ->get();  
+            ->get();
 
         $arr['user'] = $users;
         $arr['user_info'] = $user_info;
@@ -472,7 +472,7 @@ class AdminController extends Controller
 
         $input = $request->all();
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         $users = DB::table('users')->select('*')->where('id', auth()->user()->id)->get()->toArray();
@@ -485,10 +485,10 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
@@ -496,7 +496,7 @@ class AdminController extends Controller
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
@@ -505,7 +505,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
 
@@ -523,7 +523,7 @@ class AdminController extends Controller
             }
         }
 
-        
+
 
 
         if(@$input['challenge_status']){
@@ -531,7 +531,7 @@ class AdminController extends Controller
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', $input['challenge_status']]])->groupBy('user_challenges.challenge_id')->get()->toArray();
 
         }else{
-            
+
             $challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('user_challenges.challenge_id')->get()->toArray();
         }
@@ -549,7 +549,7 @@ class AdminController extends Controller
                 if($event_end_date <= Carbon::now($timezone)->toDateTimeString()){
                      $past = $past+1;
                 }elseif($event_end_date > Carbon::now($timezone)->toDateTimeString()){
-                     
+
                      $current = $current+1;
                 }
 
@@ -579,7 +579,7 @@ class AdminController extends Controller
         $arr['Strava_user'] = $Strava_user1;
 
         return view('/frontend/map-my-run-connect', $arr);
-        
+
     }
 
     public function stravaConnect(Request $request)
@@ -600,7 +600,7 @@ class AdminController extends Controller
 
         $input = $request->all();
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         $users = DB::table('users')->select('*')->where('id', auth()->user()->id)->get()->toArray();
@@ -613,10 +613,10 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
@@ -624,7 +624,7 @@ class AdminController extends Controller
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
@@ -633,7 +633,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
         $Country_name = $country == 'usa' ? 'United States' : '';
@@ -650,7 +650,7 @@ class AdminController extends Controller
             }
         }
 
-        
+
 
 
         if(@$input['challenge_status']){
@@ -658,7 +658,7 @@ class AdminController extends Controller
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', $input['challenge_status']]])->groupBy('user_challenges.challenge_id')->get()->toArray();
 
         }else{
-            
+
             $challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('user_challenges.challenge_id')->get()->toArray();
         }
@@ -677,7 +677,7 @@ class AdminController extends Controller
 
                      $past = $past+1;
                 }elseif($event_end_date > Carbon::now($timezone)->toDateTimeString()){
-                     
+
                      $current = $current+1;
                 }
 
@@ -703,7 +703,7 @@ class AdminController extends Controller
         $arr['Strava_user'] = $Strava_user1;
 
         return view('/frontend/strava-connect', $arr);
-        
+
     }
 
     public function stravaAuth()
@@ -786,10 +786,10 @@ class AdminController extends Controller
 
 
     public function refreshTest(){
-        
+
         $admin_timezone = admin_timezone();
         $adminUser = user::where('user_type', 1)->first();
-        
+
         $user_challenges = user_challenges::get();
         $total_rows = $user_challenges->count();
 
@@ -798,7 +798,7 @@ class AdminController extends Controller
                          ->first();
         $cron_job_checks = json_encode($cron_job_checks);
         $cron_job_checks = json_decode($cron_job_checks, true);
-        
+
         // Set a block size
         $block_size   = $cron_job_checks['block_size'];
 
@@ -811,7 +811,7 @@ class AdminController extends Controller
         //$total_rows = $user_challenges->count();
         $user_challenges = json_encode($user_challenges);
         $user_challenges = json_decode($user_challenges, true);
-        foreach($user_challenges as $key => $value){ 
+        foreach($user_challenges as $key => $value){
 
             $challenge_id = $value['challenge_id'];
             $user_id = $value['user_id'];
@@ -827,18 +827,18 @@ class AdminController extends Controller
                          ->get();
             $challengeInfo = json_encode($challengeInfo);
             $challengeInfo = json_decode($challengeInfo, true);
-            
-            
+
+
             if($challengeInfo){
                 foreach($challengeInfo as $key => $val){
                     if($val['meta_name'] == 'total_distance'){
                         $total_distance = $val['meta_value'];
-                                            
+
                     }
 
                     if($val['meta_name'] == 'category'){
-                        
-                        $category = $val['meta_value'];  
+
+                        $category = $val['meta_value'];
 
                     }
                 }
@@ -848,48 +848,48 @@ class AdminController extends Controller
 
             $distancreTravel = json_encode($distancreTravel);
             $distancreTravel = json_decode($distancreTravel, true);
-            
+
             if($distancreTravel){
                 foreach($distancreTravel as $key => $value){
-                    
+
                     $totalDistancreTravel = $totalDistancreTravel + $value['distance_travelled'];
-                    
+
                 }
             }*/
 
             $totalDistancreTravel =DB::table('challenge_logs')->where([['user_id', '=', $user_id], ['participation_id', '=', $challenge_id]])->sum('challenge_logs.distance_travelled');
 
-            
+
 
             $user_infos = user_infos::where([['user_id', '=', $user_id], ['meta_name', '=', 'timezone']])->first();
             $user_infos = json_encode($user_infos);
             $user_infos = json_decode($user_infos, true);
-            
+
             $timezone = $admin_timezone;
             if($user_infos){
                 $timezone = $user_infos['meta_value'];
             }
-            
+
             $challenges = challenges::where('id', $challenge_id)->first();
             $challenges = json_encode($challenges);
             $challenges = json_decode($challenges, true);
-            
+
             if($challenges){
 
-                
+
                 $event_end_date = $challenges['event_end_date'];
                 $newDate = '';
                 if($event_end_date){
                     $tempDate = explode(' ', $event_end_date);
                     $tempDate = explode('-', $tempDate['0']);
                     $stat = checkdate($tempDate[1], $tempDate[2], (int)$tempDate[0]);
-                    if($stat){ 
+                    if($stat){
                         $event_end_date = Carbon::parse($event_end_date, 'UTC')->setTimezone($admin_timezone);
 
-                        
+
 
                         if($event_end_date < Carbon::now($timezone)->toDateTimeString()){
-      
+
                             $challenge = Challenges::where("id", $challenge_id)->first();
                             $challenge->status = 2;
                             $challenge->update();
@@ -905,7 +905,7 @@ class AdminController extends Controller
 
                             $challenge_logs = Challenge_logs::where([['user_id', '=', $user_id], ['participation_id', '=', $challenge_id]])->get();
                             $challenge_logs = json_encode($challenge_logs);
-                            $challenge_logs = json_decode($challenge_logs, true); 
+                            $challenge_logs = json_decode($challenge_logs, true);
                             if(!$challenge_logs){
 
                                 $challenge = Challenges::where("id", $challenge_id)->first();
@@ -920,14 +920,14 @@ class AdminController extends Controller
                             //open challenge when date extend or challenge miles not completed
 
                             if($category == 'individual'){
-                               
+
                                 if($totalDistancreTravel >= $total_distance){
 
                                     if($challenges['price_type'] != 'default'){
-                                
+
 
                                         if($ucStatus != 2){
-                                            
+
                                             $userName = user::where('id', $user_id)->first();
                                             //Mail::to($adminUser)->send(new ChallengeCompletionUpdateIndividual($userName->name, $challenge['name'], $total_distance, $challenge['event_start_date'], $challenge['event_end_date']));
                                         }
@@ -947,7 +947,7 @@ class AdminController extends Controller
 
                                     }
                                 }
-                                
+
 
                             }else{
                                 if($challenges['price_type'] != 'default'){
@@ -955,12 +955,12 @@ class AdminController extends Controller
                                     $distancreTravelAccu = json_encode($distancreTravelAccu);
                                     $distancreTravelAccu = json_decode($distancreTravelAccu, true);
                                     $totaldistancreTravelAccuArr = 0;
-                                    
+
                                     if($distancreTravelAccu){
                                         foreach($distancreTravelAccu as $key => $value){
-                                            
+
                                             $totaldistancreTravelAccuArr = $totaldistancreTravelAccuArr + $value['distance_travelled'];
-                                            
+
                                         }
                                     }*/
 
@@ -987,25 +987,25 @@ class AdminController extends Controller
                                     }
 
                                 }
-                                
-                                
-                              
+
+
+
                             }
-                            
+
 
                         }
                     }else{
                         //open challenge when date extend or challenge miles not completed
 
                             if($category == 'individual'){
-                               
+
                                 if($totalDistancreTravel >= $total_distance){
 
                                     if($challenges['price_type'] != 'default'){
-                                
+
 
                                         if($ucStatus != 2){
-                                            
+
                                             $userName = user::where('id', $user_id)->first();
                                             //Mail::to($adminUser)->send(new ChallengeCompletionUpdateIndividual($userName->name, $challenge['name'], $total_distance, $challenge['event_start_date'], $challenge['event_end_date']));
                                         }
@@ -1025,7 +1025,7 @@ class AdminController extends Controller
 
                                     }
                                 }
-                                
+
 
                             }else{
                                 if($challenges['price_type'] != 'default'){
@@ -1033,12 +1033,12 @@ class AdminController extends Controller
                                     $distancreTravelAccu = json_encode($distancreTravelAccu);
                                     $distancreTravelAccu = json_decode($distancreTravelAccu, true);
                                     $totaldistancreTravelAccuArr = 0;
-                                    
+
                                     if($distancreTravelAccu){
                                         foreach($distancreTravelAccu as $key => $value){
-                                            
+
                                             $totaldistancreTravelAccuArr = $totaldistancreTravelAccuArr + $value['distance_travelled'];
-                                            
+
                                         }
                                     }
 
@@ -1068,21 +1068,21 @@ class AdminController extends Controller
                                     }
 
                                 }
-                                
-                                
-                              
+
+
+
                             }
                     }
                 }
-                
-                
+
+
             }
-            
+
         }
-         // Update block offset, so offset increments by block size (300)  
+         // Update block offset, so offset increments by block size (300)
           $block_offset = $block_offset + $block_size;
 
-          
+
           $pageData = '';
 
           if($block_offset >= $total_rows){
@@ -1094,8 +1094,8 @@ class AdminController extends Controller
 
         $cron_job_checks = DB::table('cron_job_checks')
                          ->where([['command_name', '=', 'Close:Competition:AfterEndDate']])
-                         ->update($pageData);         
-        
+                         ->update($pageData);
+
     }
 
     public function getToken(Request $request)
@@ -1109,8 +1109,8 @@ class AdminController extends Controller
 
         }
 
-        $input = $request->all(); 
-        $code = $input['code']; 
+        $input = $request->all();
+        $code = $input['code'];
 
         $client = new Client();
 
@@ -1121,14 +1121,14 @@ class AdminController extends Controller
 
         $Strava = new Strava(config('ct_strava.client_id'), config('ct_strava.client_secret'), config('ct_strava.redirect_uri'), $client);
         $token = $Strava->token($code);
-        
+
         $expires_at = $token->expires_at;
         $athlete_id = $token->athlete->id;
-        
-        $expires_at1 = Carbon::createFromTimestamp($expires_at)->format('Y-m-d H:i:s');   
-        
+
+        $expires_at1 = Carbon::createFromTimestamp($expires_at)->format('Y-m-d H:i:s');
+
         $expires_in = $token->expires_in;
-        
+
         $expires_in1 = Carbon::createFromTimestamp($expires_in)->format('H:i:s');
 
         $athlete = Strava_user_credentials::where([['athlete_id', '=', $athlete_id]])->get();
@@ -1137,7 +1137,7 @@ class AdminController extends Controller
         if($athlete){
             return redirect()->to(route('admin.stravaConnect'))->withInput()->withErrors(['error' => 'Device is already registered on other user. Please use another device to connect.']);
         }
-               
+
         $Strava_user = Strava_user_credentials::where([['user_id', '=', auth()->user()->id], ['athlete_id', '=', $athlete_id]])->first();
         $Strava_user1 = json_encode($Strava_user);
         $Strava_user1 = json_decode($Strava_user1, true);
@@ -1178,19 +1178,19 @@ class AdminController extends Controller
     */
     public function resetMail(Request $request)
     {
-        
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email'
         ]);
 
         if($validator->fails()){
             if($validator->fails()){
-                return redirect()->to(route('frontend.home'))->withInput()->withErrors($validator); 
-            }  
+                return redirect()->to(route('frontend.home'))->withInput()->withErrors($validator);
+            }
         }
 
         $user = User::where([['email', '=', $request->email], ['user_type', '=', 2], ['status', '=', 1]])->first();
-        
+
         if($user){
             $passwordReset = PasswordReset::updateOrCreate(
                 ['email' => $user->email],
@@ -1198,7 +1198,7 @@ class AdminController extends Controller
                     'email' => $user->email,
                     'token' => Str::random(60)
                  ]
-            ); 
+            );
 
             if ($user && $passwordReset){
                 $user->notify(new PasswordResetRequest($passwordReset->token));
@@ -1208,7 +1208,7 @@ class AdminController extends Controller
                     'status'  => intval(Response::HTTP_OK),
                     'data' => 'An email will be sent if the address is recognised'
                 ];
-                return redirect()->to(route('frontend.home'))->withInput()->with(['message' => 'An email with a password reset link has been sent to the entered email ID. Please access your mailbox and reset your password to login with the new credentials.']); 
+                return redirect()->to(route('frontend.home'))->withInput()->with(['message' => 'An email with a password reset link has been sent to the entered email ID. Please access your mailbox and reset your password to login with the new credentials.']);
             }
         }else{
 
@@ -1224,7 +1224,7 @@ class AdminController extends Controller
 
     /**
      * Reset password
-     * Here password reseton basis of enter new password and confirm new password for reset his password. 
+     * Here password reseton basis of enter new password and confirm new password for reset his password.
     */
     public function reset(Request $request)
     {
@@ -1240,8 +1240,8 @@ class AdminController extends Controller
             ]);
 
         if($validator->fails()){
-            return redirect()->back()->withInput()->withErrors($validator); 
-        } 
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
 
         $passwordReset = PasswordReset::where([
             ['token', $request->token],
@@ -1251,22 +1251,22 @@ class AdminController extends Controller
         if (!$passwordReset){
             return redirect(route('admin.resetPasswordExpire'));
         }
-           
+
         $user = User::where([['email', '=', $passwordReset->email], ['user_type', '=', 2], ['status', '=', 1]])->first();
-        
+
         if(!$user){
             return redirect()->back()->withInput()->withErrors(['error'=>'We can'."'".'t find a user with that e-mail address.']);
         }
 
-        
-            
+
+
         $user->password = bcrypt($request->password);
         $user->save();
         $passwordReset->delete();
         //$user->notify(new PasswordResetSuccess($user->first_name.' '.$user->surname,));
-        
+
     return redirect(route('admin.resetPasswordSuccessful'));
-    
+
     }
 
     /**
@@ -1280,24 +1280,24 @@ class AdminController extends Controller
     {
         $passwordReset = PasswordReset::where('token', $token)->first();
         if (!$passwordReset){
-            
+
             return redirect(route('admin.resetPasswordExpire'));
         }
-            
+
         if (Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()) {
             $passwordReset->delete();
-            
+
             return redirect(route('admin.resetPasswordExpire'));
-            
+
         }
         $DataColl = array("email"=>$passwordReset->email,"token"=>$passwordReset->token);
         return redirect()->route('admin.resetPassword', $DataColl);
-        
+
     }
 
     /**
      * Reset password form
-     * It is use to reset password according to resend link to user email. Here user enter his new password and confirm new password for reset his password. 
+     * It is use to reset password according to resend link to user email. Here user enter his new password and confirm new password for reset his password.
     */
     public function resetPassword(Request $request)
     {
@@ -1322,7 +1322,7 @@ class AdminController extends Controller
      */
     public function profile(Request $request)
     {
-        
+
         if (Auth::check() || Auth::viaRemember()) {
 
 
@@ -1363,10 +1363,10 @@ class AdminController extends Controller
         $addressVal1 = '';
         $city1 = '';
         $zip_code1 = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address .= @$value['meta_value'].' ';
@@ -1377,7 +1377,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'state'){
                    $address .= @$value['meta_value'].' ';
                    $state = @$value['meta_value'];
-                   
+
                }elseif(@$value['meta_name'] == 'city'){
                    $address .= @$value['meta_value'].' ';
                    $city = @$value['meta_value'];
@@ -1390,9 +1390,9 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'timezone'){
                    $timezone1 = @$value['meta_value'];
                }
-               
+
             }
-        }     
+        }
 
         $sta = DB::table('us_states')->where('id', $state)->first();
         $stat = '';
@@ -1422,7 +1422,7 @@ class AdminController extends Controller
 
         $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
-        
+
         $challenge = DB::table('challenges')->select('challenges.*')
                         ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('challenges.id')->get()->toArray();
 
@@ -1435,7 +1435,7 @@ class AdminController extends Controller
                 if($event_end_date <= Carbon::now($timezone)->toDateTimeString()){
                      $past = $past+1;
                 }elseif($event_end_date > Carbon::now($timezone)->toDateTimeString()){
-                     
+
                      $current = $current+1;
                 }
 
@@ -1476,7 +1476,7 @@ class AdminController extends Controller
             //'country'     =>'required',
             //'state'       =>'required',
             'zip_code'          => ['nullable','regex:/^[0-9]{5}(-[0-9]{4})?$/'],
-            
+
         ],[
             'first_name.required' => 'The first name field is required.',
         'last_name.required' => 'The last name field is required.',
@@ -1484,8 +1484,8 @@ class AdminController extends Controller
             ]);
 
         if($validator->fails()){
-            return redirect()->back()->withInput()->withErrors($validator); 
-        } 
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
         $input = $request->all();
 
         $user = User::where('id', $id)->first();
@@ -1494,7 +1494,7 @@ class AdminController extends Controller
         $user->name       = $input['first_name'].' '.$input['last_name'];
         $user->mobile_number = $input['mobile_number'];
         $user->update();
-       
+
         $User_infos = new User_infos;
         $User_infos->updateMetaValue($id, 'gender', @$input['gender']);
         $User_infos->updateMetaValue($id, 'address', @$input['address']);
@@ -1522,21 +1522,21 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->withInput()->withErrors($validator); 
-        }  
-        
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
         if(Auth::attempt(['email' => $request->email, 'password' => $request->old_password, 'user_type' => 2 ])){
             $user = Auth::user();
-            $userChange = User::where('id', $user->id)->first(); 
-            $userChange->password =  bcrypt($request->password);   
-            $userChange->update();                
+            $userChange = User::where('id', $user->id)->first();
+            $userChange->password =  bcrypt($request->password);
+            $userChange->update();
             return redirect(route('frontend.profile'))->with(['message' => 'Password changed successfully.']);
-            
+
         }
 
         return redirect()->back()->withInput()->withErrors(["error" => "Please enter correct old password."]);
 
-        
+
     }
 
     /**
@@ -1547,7 +1547,7 @@ class AdminController extends Controller
      */
     public function my_challenge(Request $request)
     {
-        
+
         if (Auth::check() || Auth::viaRemember()) {
 
 
@@ -1561,7 +1561,7 @@ class AdminController extends Controller
 
         $input = $request->all();
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         $users = DB::table('users')->select('*')->where('id', auth()->user()->id)->get()->toArray();
@@ -1574,30 +1574,30 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] == 'city'){
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
-                   
-                   
+
+
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
-                   
+
                }elseif(@$value['meta_name'] == 'zip_code'){
                    $zip_code = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
 
@@ -1615,7 +1615,7 @@ class AdminController extends Controller
             }
         }
 
-        
+
 
 
         if(@$input['challenge_status']){
@@ -1623,7 +1623,7 @@ class AdminController extends Controller
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', $input['challenge_status']], ['challenges.price_type', '!=', 'default']])->groupBy('user_challenges.challenge_id')->get()->toArray();
 
         }else{
-            
+
             $challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['challenges.price_type', '!=', 'default']])->groupBy('user_challenges.challenge_id')->get()->toArray();
         }
@@ -1641,7 +1641,7 @@ class AdminController extends Controller
                 if($event_end_date <= Carbon::now($timezone)->toDateTimeString()){
                      $past = $past+1;
                 }elseif($event_end_date > Carbon::now($timezone)->toDateTimeString()){
-                     
+
                      $current = $current+1;
                 }
 
@@ -1660,7 +1660,7 @@ class AdminController extends Controller
         $arr['address'] = $address;
         $arr['past_challenge'] = $past;
         $arr['current_challenge'] = $current;
-        
+
         $arr['totalDistancreTravel'] = $totalDistancreTravel;
         $arr['info'] = $info;
         $arr['Challenge_infos'] = $Challenge_infos;
@@ -1678,7 +1678,7 @@ class AdminController extends Controller
      */
     public function challenge_list(Request $request)
     {
-        
+
         if (Auth::check() || Auth::viaRemember()) {
 
 
@@ -1698,7 +1698,7 @@ class AdminController extends Controller
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', $input['challenge_status']]])->groupBy('user_challenges.challenge_id')->get()->toArray();
 
         }else{
-            
+
             $challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('user_challenges.challenge_id')->get()->toArray();
         }
@@ -1706,7 +1706,7 @@ class AdminController extends Controller
         $Challenge_infos = new Challenge_infos;
         $Challenge_logs = new Challenge_logs;
 
-        
+
 
         $info = array();
         foreach($challenge as $k=>$val){
@@ -1714,7 +1714,7 @@ class AdminController extends Controller
             $info[$k]['challenges'] = $val;
             $info[$k]['challenge_info'] = $challenges_info;
         }
-        
+
         $arr['info'] = $info;
         $arr['Challenge_infos'] = $Challenge_infos;
         $arr['Challenge_logs'] = $Challenge_logs;
@@ -1731,7 +1731,7 @@ class AdminController extends Controller
      */
     public function challenge_details(Request $request, $id)
     {
-        
+
         if (Auth::check() || Auth::viaRemember()) {
 
 
@@ -1740,36 +1740,36 @@ class AdminController extends Controller
           return redirect()->guest(route( 'frontend.home' ));
 
         }
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
         $arr = array();
 
         $input = $request->all();
-        
+
         $challenge = DB::table('challenges')->select('challenges.*')
                     ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')
                     ->where([['user_challenges.user_id', '=', auth()->user()->id], ['challenges.id', '=', $id]])
                     ->first();
         $challenge = json_encode($challenge);
-        $challenge = json_decode($challenge, true); 
+        $challenge = json_decode($challenge, true);
 
         $challengeInfo = Challenge_infos::where([['challenge_id', '=', $id], ['meta_name', '=', 'category']])->first()->toArray();
         //print_r($challengeInfo);
 
         $Challenge_infos = new Challenge_infos;
-        $Challenge_logs = new Challenge_logs;  
+        $Challenge_logs = new Challenge_logs;
 
-        
-        $challengeDistance = $Challenge_infos->getChallengeDistance($id);  
+
+        $challengeDistance = $Challenge_infos->getChallengeDistance($id);
 
         #Current Month Data Count
         /*$current_month =DB::table('challenge_logs')->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', $id]])->whereMonth('startDateTime', date('m'))->whereYear('created_at', date('Y'))->groupBy('created_at')->groupBy('challenge_logs.activity_id')->get();*/
         #Current Week Data Count
 
         //echo Carbon::now()->startOfMonth();
-        
+
         $current_month =DB::table('challenge_logs')->select('challenge_logs.*')->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', $id]])->whereBetween('startDateTime', [Carbon::now()->startOfMonth()->setTimezone($timezone), Carbon::now()->endOfMonth()->setTimezone($timezone)])->sum('challenge_logs.distance_travelled');
-        
+
         $monthDistance = $current_month;
         /*
         if($current_month){
@@ -1779,29 +1779,29 @@ class AdminController extends Controller
         }
          */
         $category = '';
-        
+
         $info = array();
         if($challenge){
 
             $challenges_info = DB::table('challenge_infos')->select('*')->where('challenge_infos.challenge_id', $id)->get();
             $challenges_info = json_encode($challenges_info);
-            $challenges_info = json_decode($challenges_info, true); 
+            $challenges_info = json_decode($challenges_info, true);
             $info['challenges'] = $challenge;
             $info['challenge_info'] = $challenges_info;
 
-            
+
 
             foreach($info['challenge_info'] as $Key=>$value){
-               
+
                if($value['meta_name'] == 'category'){
                   $category = $value['meta_value'];
                }
-               
+
             }
 
         }
 
-        $coverageDistance = $Challenge_logs->getChallengeCoverageDistance($id, $category, auth()->user()->id); 
+        $coverageDistance = $Challenge_logs->getChallengeCoverageDistance($id, $category, auth()->user()->id);
 
         $challenge_milestone_badge = DB::table('challenge_milestones')->select('challenge_milestones.*', 'user_badges.badge_id')
                     ->join('user_badges', 'user_badges.badge_id', '=', 'challenge_milestones.id' )
@@ -1817,7 +1817,7 @@ class AdminController extends Controller
         foreach ($challenge_milestone_badge as $key => $value) {
             $ch_miles_id_arr[] = $value['id'];
         }
-        
+
         /*$challenge_milestones = DB::table('challenge_milestones')->whereNotIn('challenge_milestones.id', $ch_miles_id_arr)->where('challenge_milestones.challenge_id', $id)->get();
         $challenge_milestones = json_encode($challenge_milestones);
         $challenge_milestones = json_decode($challenge_milestones, true);*/
@@ -1839,16 +1839,16 @@ class AdminController extends Controller
         $challenge_logs = json_decode($challenge_logs, true);
 
         $challengeCoveredLogs = array();
-        
-        
+
+
         if($challenge_logs){
             foreach($challenge_logs as $key=>$value){
                 $startDateTime = Carbon::parse($value['startDateTime'], 'UTC')->setTimezone($timezone);
 
                 $start  = new Carbon($startDateTime);
-                
+
                 $logs[] = array(
-                        "id" => $value['id'], 
+                        "id" => $value['id'],
                         "title" => round($value['distance_travelled'], 2).' Miles',
                         "name" => $value['name'],
                         "device_name" => $value['device_name'],
@@ -1862,7 +1862,7 @@ class AdminController extends Controller
                         "className" => 'scheduler_basic_event'
                   );
 
-                
+
 
                 $idName = $value['name'];
 
@@ -1875,7 +1875,7 @@ class AdminController extends Controller
                     ->where([['user_challenges.challenge_id', '=', $id], ['user_challenges.user_id', '=', auth()->user()->id]])
                     ->get();
         $userChallenge = json_encode($userChallenge);
-        $userChallenge = json_decode($userChallenge, true); 
+        $userChallenge = json_decode($userChallenge, true);
         $challengeLogList = array();
         //$challengeNameList = array();
         $challengeDistanceforUser = '';
@@ -1884,14 +1884,14 @@ class AdminController extends Controller
         $userName = '';
 
         if($challengeInfo['meta_value'] == 'individual'){
-        
-        
+
+
             if($userChallenge){
                 foreach($userChallenge as $key=>$value){
                     $totalChallengeLog = 0;
                     $accuTotalChallengeLog = 0;
-                    
-                        
+
+
                     /*$challenge_log_by_user = DB::table('challenges')->select('challenges.name', 'challenge_logs.*')
                              ->join('challenge_logs', 'challenges.id', '=', 'challenge_logs.participation_id')
                              ->where([['challenge_logs.user_id', '=', $value['user_id']], ['challenge_logs.participation_id', '=', $id]])
@@ -1908,7 +1908,7 @@ class AdminController extends Controller
 
                     $totalChallengeLog =DB::table('challenge_logs')->where([['challenge_logs.user_id', '=', $value['user_id']], ['challenge_logs.participation_id', '=', $id]])->sum('challenge_logs.distance_travelled');
 
-                    
+
 
                     if(auth()->user()->id == $value['user_id']){
                         $challengeDistanceforUser = $totalChallengeLog;
@@ -1918,7 +1918,7 @@ class AdminController extends Controller
                         $challengeLogList[] = [$totalChallengeLog, @$value['profile_marker_pic'].'.png', @$value['name']];
                     }
                 }
-                
+
             }
 
         }else{
@@ -1954,19 +1954,19 @@ class AdminController extends Controller
             }*/
 
 
-            
+
             $challengeDistanceforUser = $totalChallengeLog;
             $accuChallengeDistanceforUser = $accuTotalChallengeLog;
             $challengeImagesforUser = asset(@$profile_pic);
             $userName = $user_name;
-           
+
 
         }
 
 
 
-        
-        
+
+
 
            //echo $accuChallengeDistanceforUser;
         $adminUser = User::where('user_type', 1)->get();
@@ -1977,7 +1977,7 @@ class AdminController extends Controller
         if($adminuser_infos){
             $admintimezone = $adminuser_infos['meta_value'];
         }
-        
+
 
 
         $arr['info'] = $info;
@@ -1985,7 +1985,7 @@ class AdminController extends Controller
         $arr['Challenge_logs'] = $Challenge_logs;
         $arr['monthDistance'] = $monthDistance;
         $arr['id'] = $id;
-        $arr['user_id'] = auth()->user()->id; 
+        $arr['user_id'] = auth()->user()->id;
         $arr['challengeDistance'] = @$challengeDistance->meta_value;
         $arr['coverageDistance'] = $coverageDistance;
         $arr['challenge_milestone_badge'] = $challenge_milestone_badge;
@@ -2015,12 +2015,12 @@ class AdminController extends Controller
         /*
         $ch = json_encode($ch);
         $ch = json_decode($ch, true);
-        
+
         foreach($ch as $key => $val){
             $dist = $dist+$val['distance_travelled'];
         }
 	*/
-	
+
         $Challenges = Challenges::where('id', $input['challenge_id'])->first();
 
         $challengeUser = user::where('id', $input['user_id'])->first();
@@ -2031,10 +2031,10 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
@@ -2042,7 +2042,7 @@ class AdminController extends Controller
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
@@ -2051,7 +2051,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
 
@@ -2077,7 +2077,7 @@ class AdminController extends Controller
             $Monthly_miles_log->save();
         }
 
-        
+
 
         return redirect(route('frontend.challenge_details', $input['challenge_id']))->with(['message' => 'Your monthly submission is submitted.']);
 
@@ -2091,7 +2091,7 @@ class AdminController extends Controller
      */
     public function dashboard(Request $request)
     {
-        
+
         if (Auth::check() || Auth::viaRemember()) {
 
 
@@ -2101,7 +2101,7 @@ class AdminController extends Controller
 
         }
 
-        $timezone = $request->session()->get('timezone'); 
+        $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
         $arr = array();
@@ -2116,10 +2116,10 @@ class AdminController extends Controller
         $state = '';
         $zip_code = '';
         $country = '';
-        
+
         if($user_info){
             foreach($user_info as $key => $value){
-            
+
 
                if(@$value['meta_name'] =='address'){
                    $address  = @$value['meta_value'].', ';
@@ -2127,7 +2127,7 @@ class AdminController extends Controller
                    $city     = @$value['meta_value'].', ';
                }elseif(@$value['meta_name'] =='state'){
                    $sta = DB::table('us_states')->where('id', @$value['meta_value'])->first();
-                    
+
                     if($sta){
                         $state    = $sta->state_name.' ';
                     }
@@ -2136,7 +2136,7 @@ class AdminController extends Controller
                }elseif(@$value['meta_name'] == 'country'){
                    $country  = @$value['meta_value'];
                }
-               
+
             }
         }
 
@@ -2144,7 +2144,7 @@ class AdminController extends Controller
 
         $address = trim($state).', '.$Country_name;
 
-        
+
 
         #Current Week Data Count
         /*$distancreTravel =DB::table('challenge_logs')->where('user_id', auth()->user()->id)->get();
@@ -2161,12 +2161,15 @@ class AdminController extends Controller
                 ->groupBy('challenge_logs.activity_id')
                 ->get();*/
 
-        $distancreTravel =DB::table('challenge_logs')->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', 14]])->groupBy('created_at')->groupBy('challenge_logs.activity_id')->get();
+        $logs = $distancreTravel =DB::table('challenge_logs')
+            ->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', 14]])
+            ->groupBy('created_at')
+            ->groupBy('challenge_logs.activity_id')
+            ->get();
         $totalDistancreTravelArr = array();
+        $yearDistance = $distancreTravel->sum('distance_travelled');
 
-        $yearDistance = 0;
-        
-        if($distancreTravel){
+        /*if($distancreTravel){
             foreach($distancreTravel as $key => $value){
                 //$startDateTime = date('d/m/Y', strtotime($value->startDateTime));
                 $startDateTime = Carbon::parse($value->startDateTime)->format('d/m/Y');
@@ -2176,139 +2179,101 @@ class AdminController extends Controller
                 $totalDistancreTravelArr[$created_at] = $value->distance_travelled;
 
                 $yearDistance = $yearDistance + $value->distance_travelled;
-                
+
             }
-        }
+        }*/
         //echo '<pre>';print_r($totalDistancreTravelArr);
 
-        $totalDistancreTravel = array_sum($totalDistancreTravelArr);
+        $totalDistancreTravel = $distancreTravel->sum('distance_travelled');;
 
         //$totalDistancreTravel = $yearDistance;
 
-        $now = Carbon::now()->setTimezone($timezone);
         $startOfWeek = Carbon::now($timezone)->startOfWeek();
         $endOfWeek = Carbon::now($timezone)->endOfWeek();
-        
-        #Current Week Data Count
-        $current_week =DB::table('challenge_logs')->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', 14]])->whereBetween('startDateTime', array($startOfWeek, $endOfWeek))->groupBy('created_at')->groupBy('challenge_logs.activity_id')->get();
-        
-        $weekDistance = 0;
-        if($current_week){
-            foreach($current_week as $key => $value){
-                $startDateTime = Carbon::parse($value->startDateTime, 'UTC')->setTimezone($timezone);
-                if($startDateTime >= $startOfWeek && $startDateTime <= $endOfWeek){
-                    $weekDistance = $weekDistance + $value->distance_travelled;
-                }
-            }
-        }
 
-        $firstOfMonth = Carbon::now($timezone)->startOfMonth();
-        $lastOfMonth = Carbon::now($timezone)->endOfMonth();
-        
+        #Current Week Data Count
+        $current_week =$distancreTravel
+            ->whereBetween('startDateTime', array($startOfWeek, $endOfWeek));
+
+        $weekDistance = $current_week->sum('distance_travelled');
+
+
         #Current Month Data Count
-        $current_month =DB::table('challenge_logs')->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', 14]])->whereBetween('startDateTime', array(Carbon::now($timezone)->startOfMonth(), Carbon::now($timezone)->endOfMonth()))->groupBy('created_at')->groupBy('challenge_logs.activity_id')->get();
-        $monthDistance = 0;
-        if($current_month){
-            foreach($current_month as $key => $value){
-                $startDateTime = Carbon::parse($value->startDateTime, 'UTC')->setTimezone($timezone);
-                if($startDateTime >= $firstOfMonth && $startDateTime <= $lastOfMonth){
-                    $monthDistance = $monthDistance + $value->distance_travelled;
-                }
-            }
-        }
+        $current_month = $logs
+            ->whereBetween(
+                'startDateTime',
+                array(Carbon::now($timezone)->startOfMonth(), Carbon::now($timezone)->endOfMonth()))
+            ;
+        $monthDistance = $current_month->sum('distance_travelled');
+
         #Current Year Data Count
-        $current_year = DB::table('challenge_logs')->select('challenge_logs.*')->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', 14]])
+        /* TODO : remove
+         $current_year = DB::table('challenge_logs')
+            ->select('challenge_logs.*')
+            ->where([['user_id', '=', auth()->user()->id], ['participation_id', '=', 14]])
                 //->whereYear('startDateTime', $now->year)
                 ->groupBy('created_at')
                 ->groupBy('challenge_logs.activity_id')
                 ->get();
         //echo '<pre>'; print_r($current_year); echo '</pre>';
-                //$totalDistancreTravelArr = array();
-        $yearDistance = 0;
-        if($current_year){
-            foreach($current_year as $key => $value){
-                $startDateTime = Carbon::parse($value->startDateTime, 'UTC')->setTimezone($timezone);
-                //$totalDistancreTravelArr[$startDateTime] = $value->distance_travelled;
-                if($startDateTime->year == '2022'){
-                    $yearDistance = $yearDistance + $value->distance_travelled;
-                }
-                
-            }
-        }
+                //$totalDistancreTravelArr = array();*/
 
 
-        
+
+        $v2_auth_user = auth()->user();
         /*$challenge = DB::table('challenges')->select('challenges.*')
                          ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where('user_challenges.user_id', auth()->user()->id)->groupBy('user_challenges.challenge_id')->get()->toArray();*/
-        $challenge = DB::table('challenges')->select('challenges.*', 'user_challenges.created_at as challenge_assign_date', 'user_challenges.status as challenge_status')
-                         ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')->where([['user_challenges.user_id', '=', auth()->user()->id]])->groupBy('user_challenges.challenge_id')
-                         ->get()->toArray();
-
+        $v2_challenges = $challenge = $v2_auth_user->challenges()->with([
+            'infos']
+        )->get();
         $current = 0;
         $past    = 0;
 
         if($challenge){
-            foreach($challenge as $key => $value){
-
-                $event_end_date = Carbon::parse($value->event_end_date, 'UTC')->setTimezone($timezone);
-                if($value->challenge_status == 2){
-                     $past = $past+1;
-                }else{
-                     
-                     $current = $current+1;
-                }
-
-            }
+            $current = $v2_challenges->where('challenge_status', '!=', 2)->count();
+            $past    = $v2_challenges->where('challenge_status', '=', 2)->count();;
         }
 
         $info = array();
         $logs = array();
         foreach($challenge as $k=>$val){
-            $challenges_info = DB::table('challenge_infos')->select('*')->where('challenge_infos.challenge_id', $val->id)->get()->toArray();
-            $challenges_distance = DB::table('challenge_infos')->select('*')->where([['challenge_infos.meta_name', '=', 'total_distance'], ['challenge_infos.challenge_id', '=', $val->id]])->first();
-            $challenges_distance = json_encode($challenges_distance);
-            $challenges_distance = json_decode($challenges_distance, true);
+            $challenges_info = $val->infos;
+            $challenges_distance = $val->infos->where('challenge_infos.meta_name', '=', 'total_distance')->first();
             $info[$k]['challenges'] = $val;
             $info[$k]['challenge_info'] = $challenges_info;
             if($challenges_distance){
-                $info[$k]['challenges_distance'] = @$challenges_distance['meta_value'] ? @$challenges_distance['meta_value'] : 'N/A';
+                $info[$k]['challenges_distance'] = @$challenges_distance->meta_value ? @$challenges_distance->meta_value : 'N/A';
             }else{
                 $info[$k]['challenges_distance'] = 0;
             }
-            
-            
+
+
         }
 
-        $challenge_logs = DB::table('challenges')->select('challenges.name', 'challenge_logs.*')
+        $challenge_logs = DB::table('challenges')
+            ->select('challenges.name', 'challenge_logs.*')
                          ->join('challenge_logs', 'challenges.id', '=', 'challenge_logs.participation_id')
                          ->where('challenge_logs.user_id', auth()->user()->id)
                          ->groupBy('challenge_logs.created_at')
                          ->groupBy('challenge_logs.activity_id')
                          ->get();
 
-        $challenge_logs = json_encode($challenge_logs);
-        $challenge_logs = json_decode($challenge_logs, true);
 
         //print_r($challenge_logs);
 
         $challengeCoveredLogs = array();
-        
+
         if($challenge_logs){
             foreach($challenge_logs as $key=>$value){
-                $created_at = $value['created_at'];
-                $chLogByDate = Challenge_logs::where("created_at", $value['created_at'])->get();
-                $chLogByDate = json_encode($chLogByDate);
-                $chLogByDate = json_decode($chLogByDate, true);
+                $chLogByDate = $challenge_logs->where("created_at", $value->created_at);
 
-                
+
                 $user_challenge_status = 1;
                 if($chLogByDate){
                     foreach($chLogByDate as $ke => $val){
-                        $uc = Challenges::where([['id', '=', $val['participation_id']]])->first();
-                        $uc = json_encode($uc);
-                        $uc = json_decode($uc, true);
-                        $event_end_date = $uc['event_end_date'];
-                        
+                        $uc = $v2_challenges->where('id', '=', $val->participation_id)->first();
+                        $event_end_date = $uc->event_end_date;
+
                         if($event_end_date){
                           $tempDate = explode(' ', $event_end_date);
                           $tempDate = explode('-', $tempDate['0']);
@@ -2319,34 +2284,34 @@ class AdminController extends Controller
                             }
                           }
                         }
-                
+
                     }
                 }
-                
-                
-                $date = Carbon::parse($value['startDateTime'], 'UTC')->setTimezone($timezone);
-                
+
+
+                $date = Carbon::parse($value->startDateTime, 'UTC')->setTimezone($timezone);
+
                 $start  = new Carbon($date);
-                
+
                 $logs[] = array(
-                        "id" => $value['id'], 
-                        "title" => round($value['distance_travelled'], 2).' Miles',
-                        "name" => $value['name'],
+                        "id" => $value->id,
+                        "title" => round($value->distance_travelled, 2).' Miles',
+                        "name" => $value->name,
                         "user_challenge_status" => $user_challenge_status,
-                        "device_name" => $value['device_name'],
-                        "athlete" => $value['athlete'],
-                        "activity_id" => $value['activity_id'],
-                        "activity" => $value['activity'],
-                        "calories" => $value['calories'],
-                        "distance_travelled" => round($value['distance_travelled'], 2),
-                        "endTime" => $value['endTime'],
+                        "device_name" => $value->device_name,
+                        "athlete" => $value->athlete,
+                        "activity_id" => $value->activity_id,
+                        "activity" => $value->activity,
+                        "calories" => $value->calories,
+                        "distance_travelled" => round($value->distance_travelled, 2),
+                        "endTime" => $value->endTime,
                         "start" => $start->toDateTimeString(),
                         "className" => 'scheduler_basic_event'
                   );
 
-                $idName = $value['id'];
+                $idName = $value->id;
 
-                $challengeCoveredLogs[$idName] = @$challengeCoveredLogs[$idName] + $value['distance_travelled'];
+                $challengeCoveredLogs[$idName] = @$challengeCoveredLogs[$idName] + $value->distance_travelled;
             }
         }
 
@@ -2356,30 +2321,18 @@ class AdminController extends Controller
 
         if($logs){
             foreach($logs as $key=>$valu){
-                
-                $logUpdated[] = $valu;
-                
-            }
-        }
-        
-        $challenges = DB::table('challenges')
-            ->select('challenges.*')
-            ->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')
-            ->where([['user_challenges.user_id', '=', auth()->user()->id], ['user_challenges.status', '=', 1]])
-            ->get(); //print_r($challenges);
-            $ChallengeTotal = array();
-        foreach ($challenges as $key => $value) {
-            if(@$value->price_type != 'default'){
-                $ChallengeTotal[] = $value;
-            }
 
+                $logUpdated[] = $valu;
+
+            }
         }
+        $ChallengeTotal = $v2_challenges->where('price_type', '!=', 'default')->all();
 
         $badgeLimit = array();
         $badgeCompletePercentage = array();
         //print_r($challengeCoveredLogs);
         //foreach ($challengeCoveredLogs as $key => $value) {
-            
+
             $badges = DB::table('badges')
                 ->select('badges.*')
                 ->where([["badges.badge_type", '=', 'distance'], ["badges.condition_limit", '>', $totalDistancreTravel]])
@@ -2404,7 +2357,7 @@ class AdminController extends Controller
                 }
             }
         //}
-        
+
         asort($badgeLimit);
         //print_r($badgeLimit);
         $firstKey = array_key_first($badgeLimit);
@@ -2417,13 +2370,13 @@ class AdminController extends Controller
         if(@$badgeCompletePercentage[$firstKey]){
             $badgeComplete = @$badgeCompletePercentage[$firstKey];
         }
-        
+
 
         $badges = DB::table('badges')
             ->select('badges.*')
             //->join('user_badges', 'badges.id', '=', 'user_badges.badge_id')
             //->where([["user_badges.user_id", '=', auth()->user()->id]])
-            ->get();  
+            ->get();
 
         $LogOfDay = Challenge_logs::select(
                     'challenge_logs.*',
@@ -2440,15 +2393,15 @@ class AdminController extends Controller
         $bestDay = array();
         foreach($LogOfDay as $key => $value){
             $date = Carbon::parse(@$value['startDateTime'], 'UTC')->setTimezone($timezone);
-                
+
                     $start  = new Carbon($date);
                     $strt = $start->toDateTimeString();
-                    $strt = Carbon::createFromTimestamp(strtotime($strt))->format('Y-m-d'); 
+                    $strt = Carbon::createFromTimestamp(strtotime($strt))->format('Y-m-d');
              $bestDay[$strt] = @$bestDay[$strt] + @$value['distance_travelled'];
         }
 
         //print_r($bestDay);
-        arsort($bestDay); 
+        arsort($bestDay);
         $bestOfDay = 0;
         $i = 1;
         foreach($bestDay as $key => $value){
@@ -2476,14 +2429,14 @@ class AdminController extends Controller
             $weekNumber = $date->weekNumberInMonth;
             $startWeek = Carbon::parse(@$value['startDateTime'], 'UTC')->setTimezone($timezone)->startOfWeek();
             $endWeek = Carbon::parse(@$value['startDateTime'], 'UTC')->setTimezone($timezone)->endOfWeek();
-             
+
                     $start  = new Carbon($date);
                     $strt = $start->toDateTimeString();
-                    $strt = Carbon::createFromTimestamp(strtotime($strt))->format('Y-m-d'); 
+                    $strt = Carbon::createFromTimestamp(strtotime($strt))->format('Y-m-d');
              $bestWeek[$startWeek.$endWeek] = @$bestWeek[$startWeek.$endWeek] + @$value['distance_travelled'];
         }
-        
-        
+
+
 
         arsort($bestWeek);
         $bestOfWeek = 0;
@@ -2513,12 +2466,12 @@ class AdminController extends Controller
             $weekNumber = $date->weekNumberInMonth;
             $startMonth = Carbon::parse(@$value['startDateTime'], 'UTC')->setTimezone($timezone)->startOfMonth(); //echo '=';
             $endMonth = Carbon::parse(@$value['startDateTime'], 'UTC')->setTimezone($timezone)->endOfMonth(); //echo '<br>';
-             
+
              $bestMonth[$startMonth.$endMonth] = @$bestMonth[$startMonth.$endMonth] + @$value['distance_travelled'];
         }
 
 
-        arsort($bestMonth); 
+        arsort($bestMonth);
         $bestOfMonth = 0;
         $i = 1;
         foreach($bestMonth as $key => $value){
@@ -2526,7 +2479,7 @@ class AdminController extends Controller
                 $bestOfMonth = $value;
             }
             $i++;
-        }   
+        }
 
         //echo '<pre>'; print_r($bestMonth); echo '</pre>'; die();
 
@@ -2572,8 +2525,8 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect(route('frontend.dashboard'))->withInput()->withErrors($validator); 
-        }  
+            return redirect(route('frontend.dashboard'))->withInput()->withErrors($validator);
+        }
 
         $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
@@ -2586,9 +2539,9 @@ class AdminController extends Controller
             ->where([['user_challenges.user_id', '=', auth()->user()->id], ['challenges.price_type', '=', 'default']])
             ->first();
 
-           
 
-        
+
+
         //echo $input['startDateTime']; echo '<br>';
         $startDateTime = Carbon::parse($input['startDateTime']);
         //echo $startDateTime = Carbon::parse($input['startDateTime'])->setTimezone($timezone); echo '<br>';
@@ -2596,16 +2549,16 @@ class AdminController extends Controller
         //die;
 
         if(Carbon::now($timezone)->toDateTimeString() < $startDateTime){
-          
+
             //$arr = array("status" => 3, "message" => "The challenge will start on ".$challenge['event_start_date'].".");
             return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => "The log of future date or time can't be added."]);
 
         }
-        
+
         $minute = $input['minute'] ? $input['minute'] : 0;
         $second = $input['second'] ? $input['second'] : 0;
         $hour = $input['hour'] ? $input['hour'] : 0;
-         
+
         $data = array();
         if(@$input['challenges']){ //print_r($input['challenges']);
             foreach($input['challenges'] as $key => $val){
@@ -2620,7 +2573,7 @@ class AdminController extends Controller
                 $event_end_date = Carbon::parse($challengesById->event_end_date, 'UTC')->setTimezone(admin_timezone());
 
                  /*echo $challengesById->event_end_date;echo '<br>';
-                 echo Carbon::now('UTC'); 
+                 echo Carbon::now('UTC');
 
                 die();*/
 
@@ -2633,7 +2586,7 @@ class AdminController extends Controller
                   $stat = checkdate((int)$tempDate[1], (int)$tempDate[2], (int)$tempDate[0]);
                   if($stat){ //echo $event_start_date .'>'. $startDateTime; echo $event_start_date > $startDateTime; die();
                     if($event_start_date > $startDateTime){
-          
+
                         //$arr = array("status" => 3, "message" => "The challenge will start on ".$challenge['event_start_date'].".");
                         return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => "The log cannot be updated. Please make that the log is added for a date after the start date/time of the challenge."]);
 
@@ -2648,7 +2601,7 @@ class AdminController extends Controller
                   $stat = checkdate((int)$tempDate[1], (int)$tempDate[2], (int)$tempDate[0]);
                   if($stat){ //echo $event_start_date .'>'. $startDateTime; echo $event_start_date > $startDateTime; die();
                     if($event_end_date < $startDateTime){
-          
+
                         //$arr = array("status" => 3, "message" => "The challenge will start on ".$challenge['event_start_date'].".");
                         return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => "The log cannot be updated. Please make that the log is added for a date before the end date/time of the challenge."]);
 
@@ -2665,11 +2618,11 @@ class AdminController extends Controller
                     return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => $check['message']]);
                 }
 
-                
 
-                
+
+
                 if($check['status'] != 2){
-                    
+
                     $data[] = array(
                             "user_id" => auth()->user()->id,
                             "participation_id" => $val,
@@ -2680,7 +2633,7 @@ class AdminController extends Controller
                             "calories" => @$input['calories']
                     );
                 }
-                
+
             }
         }
 
@@ -2691,7 +2644,7 @@ class AdminController extends Controller
             return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => $check['message']]);
         }
 
-        
+
         if($check['status'] != 2){
 
             $data[]= array(
@@ -2707,7 +2660,7 @@ class AdminController extends Controller
         }
 
         //print_r($data); die();
-          
+
         $ch = Challenge_logs::insert($data);
 
         if($ch){
@@ -2716,10 +2669,10 @@ class AdminController extends Controller
             }
             return redirect(route('frontend.dashboard'))->with(['message' => 'Log added successfully.']);
         }else{
-            return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => 'Log is not added successfully.']); 
+            return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => 'Log is not added successfully.']);
         }
-        
-        
+
+
     }
 
     public function update_challenge_log(Request $request){
@@ -2732,13 +2685,13 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect(route('frontend.dashboard'))->withInput()->withErrors($validator); 
-        }  
+            return redirect(route('frontend.dashboard'))->withInput()->withErrors($validator);
+        }
 
         $timezone = $request->session()->get('timezone');
         $timezone = $timezone ? $timezone : env('DEFAULT_TIMEZONE');
 
-        $input = $request->all(); 
+        $input = $request->all();
 
         // $startDateTime = str_replace('/', '-', $input['startDateTime']);
         // $startDateTime = strtotime($startDateTime);
@@ -2753,26 +2706,26 @@ class AdminController extends Controller
         $chLog = Challenge_logs::where("id", $input['challenge_id'])->first();
         $chLog = json_encode($chLog);
         $chLog = json_decode($chLog, true);
-        
+
         //print_r($chLog); die();
-        
+
         $challengesById = DB::table('challenges')
                     ->select('challenges.*')
                     //->join('user_challenges', 'challenges.id', '=', 'user_challenges.challenge_id')
                     ->where([['challenges.id', '=', $chLog['participation_id']]])
                     ->first();
 
-                    
+
 
         $event_start_date = Carbon::parse($challengesById->event_start_date, 'UTC')->setTimezone($timezone);
         $newDate = '';
         if($event_start_date){
-        $tempDate = explode(' ', $event_start_date); 
-          $tempDate = explode('-', $tempDate['0']); 
+        $tempDate = explode(' ', $event_start_date);
+          $tempDate = explode('-', $tempDate['0']);
           $stat = checkdate((int)$tempDate[1], (int)$tempDate[2], (int)$tempDate[0]);
           if($stat){ //echo $event_start_date .'>'. $startDateTime; echo $event_start_date > $startDateTime; die();
             if($event_start_date > $startDateTime){
-  
+
                 //$arr = array("status" => 3, "message" => "The challenge will start on ".$challenge['event_start_date'].".");
                 return redirect(route('frontend.dashboard'))->withInput()->withErrors(['error' => "The log cannot be updated. Please make that the log is added for a date after the start date/time of the challenge."]);
 
@@ -2809,11 +2762,11 @@ class AdminController extends Controller
                     $ChallengeInfos = new Challenge_infos();
                     $check = $ChallengeInfos->checkAndActivateChallenge($chLogUpdate->participation_id, $dist, auth()->user()->id, $chLogUpdate->startDateTime);
                     $check = json_decode($check, true);
-                    
+
 
                 }
-                
-                
+
+
                 /*$chLogUpdate->user_id = auth()->user()->id;
                 $chLogUpdate->activity = $input['activity'];
                 $chLogUpdate->startDateTime = $startDateTime;
@@ -2823,9 +2776,9 @@ class AdminController extends Controller
                 $chLogUpdate->update();*/
             }
 
-                $data["user_id"] = auth()->user()->id; 
-                $data["activity"] = $input['activity']; 
-                $data["startDateTime"] = $startDateTime; 
+                $data["user_id"] = auth()->user()->id;
+                $data["activity"] = $input['activity'];
+                $data["startDateTime"] = $startDateTime;
                 $data["endTime"] = $hour.':'.$minute.':'.$second;
                 $data["distance_travelled"] = $input['distance'];
                 $data["calories"] = @$input['calories'];
@@ -2833,15 +2786,15 @@ class AdminController extends Controller
             $ch = Challenge_logs::where("created_at", $chLog['created_at'])->update($data);
 
         }
-        
+
         if(@$input['challengeDetails']){
             return redirect($input['challengeDetails'])->with(['message' => 'Log added successfully.']);
         }
-        
+
 
         return redirect(route('frontend.dashboard'))->with(['message' => 'Log updated successfully.']);
-        
-        
+
+
     }
 
     public function delete_challenge_log(Request $request){
@@ -2851,8 +2804,8 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect(route('frontend.dashboard'))->withInput()->withErrors($validator); 
-        }  
+            return redirect(route('frontend.dashboard'))->withInput()->withErrors($validator);
+        }
 
         $input = $request->all();
 
@@ -2872,7 +2825,7 @@ class AdminController extends Controller
                 $ChallengeInfos = new Challenge_infos();
                 $check = $ChallengeInfos->checkAndActivateChallenge($chLogDelete->participation_id, $chLogDelete->distance_travelled, auth()->user()->id, $chLogDelete->startDateTime);
                 $check = json_decode($check, true);
-                
+
                 $chLogDelete->delete();
 
 
@@ -2883,9 +2836,9 @@ class AdminController extends Controller
         if(@$input['challengeDetails']){
             return redirect($input['challengeDetails'])->with(['message' => 'Log deleted successfully.']);
         }
-            
+
         return redirect(route('frontend.dashboard'))->with(['message' => 'Log deleted successfully.']);
-        
+
     }
 
     /**
@@ -2902,20 +2855,20 @@ class AdminController extends Controller
 
         }else{
 
-          
+
 
         }
 
         $challenge = DB::table('challenges')->select('*')->get()->toArray();
-        
+
         $info = array();
         foreach($challenge as $k=>$val){
             $challenges_info = DB::table('challenge_infos')->select('*')->where('challenge_infos.challenge_id', $val->id)->get()->toArray();
             $info[$k]['challenges'] = $val;
             $info[$k]['challenge_info'] = $challenges_info;
         }
-        
-        
+
+
         //echo '<pre>'; print_r($info); echo '</pre>';
 
         return view::make('/frontend/home');
@@ -2944,9 +2897,9 @@ class AdminController extends Controller
                   </div>
                 </body>
                 EOD;
-                
+
                 $css = <<<EOD
-                body { 
+                body {
                   background-color: transparent;
                 }
                 .image_container {
@@ -2976,7 +2929,7 @@ class AdminController extends Controller
 
                 /*$data = array('html'=>$html,
                               'css'=>$css,
-                              'google_fonts'=>$google_fonts, 
+                              'google_fonts'=>$google_fonts,
                               'device_scale'=>1
                             );*/
 
@@ -2992,10 +2945,10 @@ class AdminController extends Controller
                         $body = json_decode($res->getBody(), true);
                         //print_r($body);
                         //echo '<br>';
-                        $fileMarker = $body['url']; 
+                        $fileMarker = $body['url'];
                 //die();
 
-                 /*$url = $body['url']; 
+                 /*$url = $body['url'];
                 $contents = file_get_contents($url);
                 $name1 = substr($url, strrpos($url, '/') + 1); //die();
                 $name = 'public/challenge/challenge_image/'.$id.$name1.date('YmdHis').rand(1,99999).'.png';
@@ -3005,9 +2958,9 @@ class AdminController extends Controller
                 //File::make($res['url'])->save(public_path('public/challenge/challenge_image' . $filename));
 
 
-         /*if($request->profile_pic != ''){        
+         /*if($request->profile_pic != ''){
               $path = storage_path().'/uploads/images/';
-              
+
               $result = File::exists(storage_path('app/public/user/profile_image'));
                 if (!$result) {
                     File::makeDirectory(storage_path('app/public/user/profile_image'));
@@ -3022,7 +2975,7 @@ class AdminController extends Controller
                     $destinationPath = url('storage/user/profile_image');
                     $logo = 'storage/user/profile_image/'.$avatarName;
                 }
-              
+
          }*/
 
               $user = User::where('id', $id)->first();
@@ -3034,23 +2987,23 @@ class AdminController extends Controller
     }
 
     public function login(Request $request)
-    {  
-        
+    {
+
         $validator = Validator::make($request->all(), [
             'email'     => 'required|email',
             'password'  => 'required|min:8|max:20'
         ]);
 
         if($validator->fails()){
-            return redirect()->to(route('frontend.home').'#exampleModal')->withInput()->withErrors($validator); 
-        }  
-        
+            return redirect()->to(route('frontend.home').'#exampleModal')->withInput()->withErrors($validator);
+        }
+
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => 2 ], ($request->remember == 'on') ? true : false)){
             $user = Auth::user();
             $request->session()->put('id', $user->id);
             $request->session()->put('name', $user->name);
             $request->session()->put('profile_pic', $user->profile_pic);
-            $request->session()->put('email', $user->email);  
+            $request->session()->put('email', $user->email);
 
             $user_infos = User_infos::where([['user_id', '=', $user->id], ['meta_name', '=', 'timezone']])->first();
             $user_infos = json_encode($user_infos);
@@ -3060,11 +3013,11 @@ class AdminController extends Controller
             if($user_infos){
                 $timezone = $user_infos['meta_value'];
                 if($timezone){
-                    $request->session()->put('timezone', $timezone); 
+                    $request->session()->put('timezone', $timezone);
                 }else{
                     $redirectTime = 1;
                 }
-                
+
             }
 
             $challenge = Challenges::where('price_type', 'default')->inRandomOrder()->first();
@@ -3089,8 +3042,8 @@ class AdminController extends Controller
                 return redirect()->route('frontend.home');
             }
 
-            
-            
+
+
         }
 
         return redirect()->to(route('frontend.home'))->withInput()->withErrors(["error" => "The Email Address or Password you have entered didn't match. Please try again."]);
@@ -3116,9 +3069,9 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->to(route('frontend.home').'#signup-modal')->withInput()->withErrors($validator); 
-        }  
-        
+            return redirect()->to(route('frontend.home').'#signup-modal')->withInput()->withErrors($validator);
+        }
+
         $user = new User;
         $user->name = $request->first_name.' '.$request->last_name;
         $user->first_name = $request->first_name;
@@ -3153,17 +3106,17 @@ class AdminController extends Controller
             $request->session()->put('id', $user->id);
             $request->session()->put('name', $user->name);
             $request->session()->put('profile_pic', $user->profile_pic);
-            $request->session()->put('email', $user->email);  
+            $request->session()->put('email', $user->email);
 
             $user_infos = User_infos::where([['user_id', '=', $user->id], ['meta_name', '=', 'timezone']])->first();
             $user_infos = json_encode($user_infos);
             $user_infos = json_decode($user_infos, true);
             if($user_infos){
-                $request->session()->put('timezone', $user_infos['meta_value']); 
+                $request->session()->put('timezone', $user_infos['meta_value']);
             }
 
             return redirect()->route('frontend.home');
-            
+
         }
 
         return redirect()->route('frontend.home');
