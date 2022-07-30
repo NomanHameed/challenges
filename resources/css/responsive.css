@@ -1,0 +1,1882 @@
+@media (min-width: 1690px) {
+    .manage-device-main-box {
+        min-height: 302px;
+    }
+}
+
+@media (min-width: 1950px) {
+    .manage-device-main-box {
+        min-height: 420px;
+    }
+
+    .container {
+        max-width: 1550px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 1480px) {
+    .drp-links ul li a,
+    .table td {
+        font-size: 14px !important;
+    }
+
+    .drp-links .nav-link > span:first-child {
+        font-size: 17px;
+    }
+
+    .activity-top-head h5 {
+        font-size: 16px;
+    }
+
+    .user-dp-container {
+        width: 145px;
+        height: 145px;
+    }
+
+    .sidebar-wrapper {
+        width: 350px;
+        flex: 0 0 350px;
+        max-width: 350px;
+    }
+
+    .user-info-wrp-bx h4,
+    .semper h5 {
+        font-size: 20px;
+    }
+
+    .semper-bx-main {
+        max-width: 230px;
+        height: 60px;
+    }
+
+    .user-info-wrp-bx h5,
+    #sidebar-menu .nav-link {
+        font-size: 16px;
+    }
+
+    .find-us-bx address ul li a {
+        font-size: 18px;
+    }
+
+    .find-us-bx h3 {
+        font-size: 30px;
+    }
+
+    .login-wrp .show,
+    .hide-pass {
+        font-size: 20px;
+    }
+
+    .img-item figure {
+        width: 70px;
+        height: 70px;
+    }
+
+    .step:before,
+    .step:after {
+        top: 22px;
+    }
+
+    .join-challenge-process {
+        padding-bottom: 0 !important;
+    }
+
+    .step-process-style {
+        padding-bottom: 40px;
+    }
+
+    .step-text {
+        font-size: 16px;
+    }
+
+    .step-no {
+        font-size: 18px;
+    }
+
+    .step-no {
+        line-height: 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+    }
+
+    ::placeholder {
+        font-size: 16px !important;
+    }
+
+    .form-control {
+        height: 55px !important;
+        font-size: 18px;
+    }
+
+    .challenge-bx p,
+    .tag-brdr {
+        font-size: 15px;
+    }
+
+    .price-ch span {
+        font-size: 16px;
+    }
+
+    .blue-btn,
+    .grey-btn {
+        height: 50px;
+        font-size: 15px;
+        min-width: 160px;
+    }
+
+    .challenge-heading {
+        font-size: 18px;
+    }
+
+    .load-more.green-btn,
+    .theme-btn,
+    .theme-btn-custom,
+    .previous.action-button-previous,
+    #msform .action-button {
+        min-width: 260px;
+    }
+
+    .modal-title {
+        font-size: 32px;
+    }
+
+    .modal-top h6 {
+        font-size: 18px;
+    }
+
+    .sub-heading {
+        font-size: 24px;
+    }
+
+    .grey-circle {
+        width: 460px;
+        height: 460px;
+    }
+
+    .grey-circle-2 {
+        width: 370px;
+        height: 370px;
+    }
+
+    .video-container {
+        width: 290px;
+        height: 290px;
+    }
+
+    .site-header .navbar-brand img {
+        max-width: 165px;
+    }
+
+    .site-header .nav-item,
+    .site-header .login-area li {
+        margin-right: 20px;
+    }
+
+    .site-header .nav-link,
+    .site-header .login-area a {
+        font-size: 15.8px;
+    }
+
+    .site-header .loginsignup .material-icons-outlined {
+        vertical-align: middle;
+        font-size: 20px;
+    }
+
+    .join-challenge-btn,
+    .site-header .loginsignup {
+        width: 190px;
+    }
+
+    .banner-caption h1 {
+        font-size: 50px;
+    }
+
+    .site-header {
+        padding: 5px 0;
+    }
+
+    .banner-caption h1 span {
+        font-size: 80px;
+    }
+
+    .content h3 {
+        font-size: 26px;
+    }
+
+    .content p,
+    .list-reason p {
+        font-size: 14px;
+    }
+
+    .green-btn.find-race,
+    .green-btn.moreabout {
+        width: 260px;
+    }
+
+    .site-heading {
+        font-size: 40px;
+    }
+
+    .with-us-rp h3 {
+        font-size: 28px;
+    }
+
+    .count {
+        font-size: 74px;
+        top: -41px;
+    }
+
+    .how-it-work-bx p {
+        font-size: 14px;
+    }
+
+    .how-it-work-bx p {
+        max-width: 309px;
+    }
+
+    .count-step {
+        font-size: 165px;
+        top: 19px;
+    }
+
+    .how-it-work-bx {
+        padding-left: 26px;
+    }
+
+    .register-now-btn a {
+        width: 260px;
+        height: 70px;
+    }
+
+    .capable-wrp .section-head p {
+        font-size: 18px;
+    }
+
+    .bk-icon img {
+        max-height: 100px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .manage-device-box:nth-last-child(-n + 2) {
+        margin-bottom: 0;
+    }
+
+    .manage-device-box:nth-child(3n) {
+        margin-right: 3%;
+    }
+
+    .manage-device-box:nth-child(2n) {
+        margin-right: 0%;
+    }
+
+    .manage-device-box {
+        width: calc(97% / 2);
+    }
+
+    .profile-mainbox-top .media-body a {
+        font-size: 14px;
+    }
+
+    .dash-profile-main-container {
+        padding: 30px;
+    }
+
+    .custom-panel .panel-heading h4 {
+        font-size: 24px;
+    }
+
+    .custom-panel.email-address-panel .media-body a,
+    .profile-mainbox-top .media-body h6 {
+        font-size: 20px;
+    }
+
+    .mail-icon-custm {
+        width: 65px;
+        height: 65px;
+    }
+
+    .semper-bx-main {
+        max-width: 190px;
+        height: 55px;
+    }
+
+    .user-info-wrp-bx h4,
+    .semper h5 {
+        font-size: 18px;
+    }
+
+    .sidebar-wrapper {
+        width: 290px;
+    }
+
+    .p-0-30 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .activity-mile-status h6 {
+        font-size: 20px;
+    }
+
+    .activity-box-wrp .icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .dash-badges-sec .cupid-img-wrp {
+        height: 175px;
+    }
+
+    .add-log-options .nav-tabs .nav-link {
+        min-width: 205px;
+        min-height: 50px;
+        line-height: 50px;
+    }
+
+    .milestone-name-bx h3,
+    .milestone-distance-info span,
+    .cupid-row.four-box .cupid-product-bx figcaption {
+        font-size: 14px;
+    }
+
+    .find-us-bx {
+        padding-left: 25px;
+    }
+
+    .text-sub,
+    .item-info-text span {
+        font-size: 16px;
+    }
+
+    .price-sub,
+    .card-item-price {
+        font-size: 18px;
+    }
+
+    .card-item-sub-totl.total .price-sub {
+        font-size: 20px;
+    }
+
+    .img-item figure {
+        width: 55px;
+        height: 55px;
+    }
+
+    .card-product-listing h5 {
+        font-size: 18px;
+    }
+
+    .location-mark span,
+    .step-heading-top p,
+    .content-blog p {
+        font-size: 14px;
+    }
+
+    .page-info-blog p {
+        font-size: 15px;
+    }
+
+    .blue-btn,
+    .grey-btn {
+        height: 50px;
+        font-size: 14px;
+        min-width: 135px;
+    }
+
+    .challenge-bx p,
+    .tag-brdr,
+    .credit-debit-btn {
+        font-size: 14px;
+    }
+
+    .frm-inner-h {
+        font-size: 18px;
+    }
+
+    .previous.action-button-previous,
+    #msform .action-button {
+        font-size: 16px;
+    }
+
+    .inner-page-banner .banner-container {
+        top: 65%;
+    }
+
+    .p-left-70 {
+        padding-left: 40px;
+    }
+
+    .img-insta {
+        height: 190px;
+    }
+
+    .gallery-row figcaption {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .site-header .navbar-brand img {
+        max-width: 165px;
+    }
+
+    .site-header .nav-link,
+    .site-header .login-area a {
+        font-size: 13.8px;
+    }
+
+    .join-challenge-btn,
+    .site-header .loginsignup {
+        width: 170px;
+    }
+
+    .site-header .nav-item,
+    .site-header .login-area li {
+        margin-right: 10px;
+    }
+
+    .banner-caption h1 {
+        font-size: 45px;
+    }
+
+    .banner-caption h1 span {
+        font-size: 70px;
+    }
+
+    .banner-caption p {
+        font-size: 20px;
+    }
+
+    .banner-btm-area {
+        margin-top: -60px;
+    }
+
+    .green-btn.find-race,
+    .green-btn.moreabout,
+    .register-now-btn a,
+    .load-more.green-btn,
+    .theme-btn,
+    .theme-btn-custom {
+        width: 220px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 14px;
+    }
+
+    .price-item-map {
+        font-size: 28px;
+    }
+
+    .heading-2 {
+        font-size: 20px;
+    }
+
+    .heading-3 {
+        font-size: 18px;
+    }
+
+    .heading-1 {
+        font-size: 24px;
+    }
+
+    .cupid-product-bx figcaption {
+        font-size: 16px;
+    }
+
+    .content h3 {
+        font-size: 22px;
+    }
+
+    .banner-btm-bx .icon-bg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .banner-btm-bx {
+        height: 200px;
+    }
+
+    .site-heading {
+        font-size: 36px;
+    }
+
+    .grey-circle {
+        width: 370px;
+        height: 370px;
+    }
+
+    .grey-circle-2 {
+        width: 300px;
+        height: 300px;
+    }
+
+    .video-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .with-us-rp:after {
+        width: 84px;
+        right: 80px;
+        top: 10px;
+    }
+
+    .list-reason:nth-child(2) .with-us-rp:after,
+    .list-reason:nth-child(4) .with-us-rp:after {
+        left: 40px;
+    }
+
+    .list-reason:nth-child(4) .with-us-rp:after {
+        left: 100px;
+    }
+
+    .list-reason p {
+        max-width: 255px;
+    }
+
+    .support-logo-box figure img {
+        padding: 15px;
+    }
+
+    .capable-wrp .section-head p {
+        font-size: 16px;
+    }
+
+    .capable-wrp .section-head p br {
+        display: none;
+    }
+
+    .register-now-btn {
+        margin-top: 35px;
+    }
+
+    .tab-main-row .cupid-product-bx figcaption {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .gallery-item {
+        flex: 31%;
+    }
+
+    .gallery-row figcaption {
+        padding: 0 10px;
+    }
+
+    .gallery-row figcaption {
+        font-size: 13px;
+    }
+
+    .how-it-work-bx h3 {
+        font-size: 28px;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    #sidebar-menu {
+        min-height: 470px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .OpenSideBarMenu {
+        /* overflow: hidden; */
+        height: 100vh;
+    }
+
+    .user-dp-wrp {
+        margin-top: -15px;
+        min-width: 250px;
+    }
+
+    .user-dp-container {
+        width: 115px;
+        height: 115px;
+        border: 6px solid #ffffff;
+        box-shadow: 0px 0px 0px 2px #003b63;
+    }
+
+    .profile-sidebar.p-left-70 {
+        padding: 0;
+        padding-right: 15px;
+    }
+
+    .OpenSideBarMenu .sidebar-wrapper {
+        width: 300px;
+        flex: 0 0 300px;
+        /* background: #f5fbff; */
+    }
+
+    .page-body-wrapper {
+        position: relative;
+    }
+
+    .sidebar-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        bottom: 0;
+        background: #f5fbff;
+        -webkit-transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 9;
+        padding-top: 0px;
+        /* overflow-y: scroll;
+		overflow-x: hidden; */
+    }
+
+    .sidebar-cont {
+        height: calc(100vh - 86px);
+        padding-top: 40px;
+        position: relative;
+        overflow: hidden;
+        overflow-y: scroll !important;
+        background: #f5fbff;
+    }
+
+    .OpenSideBar {
+        display: block;
+    }
+
+    .page-body {
+        padding: 70px 0 40px;
+        overflow-x: hidden;
+    }
+
+    /* section.cupid-product-wrp.sec-spacing {
+		padding-bottom: 10px;
+	}
+	 */
+    .cupid-row.four-box .cupid-product-bx:nth-last-child(-n + 2) {
+        margin-bottom: 0;
+    }
+
+    .cupid-row.four-box .cupid-product-bx:nth-child(2n) {
+        margin-right: 0%;
+    }
+
+    .cupid-row.four-box .cupid-product-bx {
+        width: calc(97% / 2);
+        margin-bottom: 5%;
+    }
+
+    .add-log-options .nav-tabs .nav-link {
+        min-width: 195px;
+        font-size: 16px;
+    }
+
+    .milestone-box {
+        width: calc(98% / 3);
+        margin-right: 1%;
+    }
+
+    .find-us-bx {
+        padding-left: 15px;
+    }
+
+    .step-wrp-top {
+        left: 75px;
+    }
+
+    .previous.action-button-previous,
+    #msform .action-button {
+        min-width: 200px;
+        height: 55px;
+        font-size: 14px;
+    }
+
+    .merchandise-tab .checkbx-custom {
+        left: 10px;
+        top: 10px;
+    }
+
+    .checkout-card-right {
+        margin-left: 25px;
+    }
+
+    .checkout-row {
+        flex-flow: column;
+    }
+
+    .checkout-form {
+        width: 100%;
+    }
+
+    .checkout-card-right {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 35px;
+    }
+
+    .heading-1 {
+        font-size: 22px;
+    }
+
+    .heading-2 {
+        font-size: 18px;
+    }
+
+    .heading-3 {
+        font-size: 16px;
+    }
+
+    .price-item-map {
+        font-size: 22px;
+    }
+
+    .location-map-bx {
+        padding-right: 10px;
+    }
+
+    .location-mark span:first-child {
+        padding-right: 6px;
+    }
+
+    .cupid-img-wrp img {
+        padding: 15px;
+    }
+
+    .location-mark span {
+        font-size: 11.5px;
+    }
+
+    .cupid-img-wrp {
+        height: 200px;
+    }
+
+    .blue-btn,
+    .grey-btn {
+        min-width: 125px;
+    }
+
+    .challenge-bx {
+        width: calc(97% / 2);
+    }
+
+    .challenge-bx:nth-child(3n) {
+        margin-right: 3%;
+    }
+
+    .challenge-bx:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .site-menu-mobile ul.login-area {
+        display: none;
+    }
+
+    .inner-banner {
+        padding-top: 40%;
+    }
+
+    .inner-page-banner .banner-caption h1 {
+        font-size: 40px;
+    }
+
+    .gallery-item {
+        flex: 30.44%;
+    }
+
+    .site-heading {
+        font-size: 28px;
+    }
+
+    .with-us-rp h3 {
+        font-size: 24px;
+    }
+
+    .list-reason {
+        margin-bottom: 25px;
+    }
+
+    .newletter-sec .btn.green-btn {
+        font-size: 14px;
+        width: 135px;
+        height: 60px;
+    }
+
+    .list-reason:nth-child(2) .with-us-rp:after,
+    .list-reason:nth-child(4) .with-us-rp:after {
+        left: -30px;
+    }
+
+    .list-reason:nth-child(4) .with-us-rp:after {
+        left: 0;
+    }
+
+    .with-us-rp {
+        max-width: 200px;
+    }
+
+    .with-us-rp:after {
+        width: 39px;
+        right: -16px;
+    }
+
+    .list-reason p {
+        max-width: 175px;
+        font-size: 12px;
+    }
+
+    .grey-circle {
+        width: 320px;
+        height: 320px;
+    }
+
+    .grey-circle-2 {
+        width: 280px;
+        height: 280px;
+    }
+
+    .count {
+        font-size: 60px;
+        top: -33px;
+    }
+
+    .count-step {
+        font-size: 115px;
+        top: -1px;
+    }
+
+    .how-it-work-bx h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .capable-wrp .site-heading {
+        margin-bottom: 40px;
+    }
+
+    .login-area {
+        margin: 0;
+        margin-right: 50px;
+    }
+
+    ul.login-area,
+    .toggleMenu,
+    a.navbar-brand {
+        z-index: 999;
+    }
+
+    .site-menu-mobile.OpenNav {
+        width: 100%;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .toggleMenu {
+        display: block;
+        position: absolute;
+        right: 0px;
+        top: 50% !important;
+        transform: translateY(-50%);
+        display: block;
+    }
+
+    body.overflow-hidden .video-box {
+        z-index: 0;
+    }
+
+    .site-header .nav-link,
+    .site-header .login-area a {
+        font-size: 13px;
+    }
+
+    .site-header {
+        padding: 5px 0;
+    }
+
+    .join-challenge-btn,
+    .site-header .loginsignup {
+        width: 160px;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .banner-caption h1 {
+        font-size: 45px;
+        margin-bottom: 25px;
+    }
+
+    .banner-caption p {
+        font-size: 16px;
+    }
+
+    .banner-caption h1 span {
+        font-size: 55px;
+    }
+
+    .green-btn.find-race,
+    .green-btn.moreabout,
+    .register-now-btn a,
+    .load-more.green-btn {
+        width: 200px;
+    }
+
+    .content h3 {
+        font-size: 20px;
+    }
+
+    .logo-ftr img {
+        max-width: 160px;
+    }
+
+    .ftr-bx.logo-ftr p,
+    .ftr-links li a,
+    .ftr-bx address ul li a,
+    .copyright.text-center p {
+        font-size: 12px;
+    }
+
+    .ftr-bx address ul li a span {
+        font-size: 18px;
+    }
+
+    .ftr-links li {
+        margin-bottom: 10px;
+    }
+
+    .Capable-sec .bg-img {
+        padding-top: 59%;
+    }
+
+    .site-menu-mobile ul li {
+        border-bottom: 2px solid #00213cc7;
+        padding: 22px 15px;
+        margin: 0 !important;
+        display: block;
+        width: 100%;
+    }
+
+    .site-header .navbar-nav {
+        align-items: baseline;
+    }
+
+    .dashboardHeader .toggleMenu {
+        top: 50% !important;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+    }
+
+    .login-area.aftr-login .material-icons-outlined {
+        font-size: 34px;
+        position: relative;
+        top: 1px;
+    }
+
+    .site-menu-mobile .nav-link {
+        font-size: 18px;
+    }
+
+    .site-menu-mobile ul {
+        margin: inherit !important;
+        width: 100%;
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 788px) {
+    .step-wrp-top {
+        left: 51px;
+    }
+}
+
+@media (max-width: 767px) {
+    .manage-device-main-box {
+        min-height: 210px;
+    }
+
+    .mail-icon-custm {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+
+    .custom-panel .panel-heading h4 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .profile-mainbox-top .media-body {
+        margin-left: 15px;
+    }
+
+    .custom-panel .panel-body {
+        padding: 24px 15px;
+    }
+
+    .custom-panel.email-address-panel .media-body a,
+    .profile-mainbox-top .media-body h6 {
+        font-size: 18px;
+    }
+
+    .time-mail-bx span,
+    .custom-panel .panel-heading p {
+        font-size: 14px;
+    }
+
+    .dash-profile-main-container {
+        padding: 20px 20px 30px;
+    }
+
+    .custom-panel .panel-heading {
+        padding: 15px;
+    }
+
+    .user-profile-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .milestone-name-bx {
+        text-align: center;
+    }
+
+    .activity-box-wrp {
+        width: 100%;
+        float: none;
+        margin-right: 0 !important;
+        margin-bottom: 45px;
+    }
+
+    .challenge-milestones-wrp {
+        padding-bottom: 40px;
+    }
+
+    .add-log-options {
+        margin-top: 40px;
+    }
+
+    .milestone-img-wrp {
+        text-align: center;
+    }
+
+    .aftr-login-map .location-mark {
+        margin-top: 20px !important;
+    }
+
+    .aftrlgn .challenge-main-wrp.aftr-login-map {
+        margin: 0;
+    }
+
+    .activity-details-wrp {
+        display: none;
+    }
+
+    .milestone-box {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .milestone-box:not(:last-child) {
+        margin-bottom: 25px;
+    }
+
+    .top-head-info-wrp h2 {
+        font-size: 24px;
+    }
+
+    .heading-5 {
+        font-size: 18px;
+    }
+
+    .find-us-bx address ul li a {
+        font-size: 16px;
+    }
+
+    .find-us-bx address ul li a span {
+        font-size: 32px;
+    }
+
+    .our-map-location {
+        margin-top: 25px;
+    }
+
+    .find-us-bx {
+        padding-left: 0;
+        padding-top: 30px;
+    }
+
+    .step-wrp-top {
+        left: 0;
+    }
+
+    .step-text {
+        font-size: 14px;
+    }
+
+    .step {
+        width: calc(100% / 5);
+    }
+
+    .challenge-main-wrp {
+        margin-top: 25px;
+    }
+
+    .challenge-main-wrp {
+        text-align: center;
+    }
+
+    .hide-show {
+        right: 10px;
+    }
+
+    .password.form-control {
+        padding-right: 41px;
+    }
+
+    .login-opt-top.d-flex .google-login.btn-dflt {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        padding: 0 15px;
+        height: 55px;
+    }
+
+    .login-opt-top.d-flex,
+    .form-check.btm-psd {
+        display: block !important;
+    }
+
+    .close-modal {
+        width: 30px;
+        height: 30px;
+        top: 1px;
+        right: 1px;
+        line-height: 30px;
+        font-size: 15px;
+    }
+
+    .form-control::placeholder,
+    .form-control {
+        font-size: 16px;
+    }
+
+    .btn-dflt,
+    .login-opt-top.d-flex a {
+        height: 60px;
+        font-size: 14px;
+        line-height: 60px;
+    }
+
+    .forgot-pad a,
+    .checkbx-custom {
+        font-size: 14px;
+    }
+
+    .login-wrp .show,
+    .hide-pass {
+        font-size: 20px;
+    }
+
+    .modal-header.d-block {
+        padding-bottom: 25px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        color: #868686;
+        font-weight: 600;
+        padding-left: 0;
+        margin-bottom: 0.7rem;
+    }
+
+    .acitivity-info-bx .multiselect-container .form-group label {
+        margin-bottom: 0;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-title {
+        font-size: 22px;
+    }
+
+    .modal-top h6 {
+        font-size: 14px;
+    }
+
+    .site-menu-mobile ul.login-area {
+        display: block;
+    }
+
+    .inner-page-banner .banner-caption h1 {
+        font-size: 30px;
+    }
+
+    .sec-spacing {
+        padding: 40px 0;
+    }
+
+    .inner-banner {
+        padding-top: 58%;
+    }
+
+    .d-none-767 {
+        display: none;
+    }
+
+    .d-block-767 {
+        display: block !important;
+    }
+
+    .our-goal-sec {
+        background: #f9f9f9;
+        padding-top: 40px;
+    }
+
+    .content-blog p {
+        font-size: 14px;
+    }
+
+    .our-goal-row.d-flex.align-items-center {
+        flex-direction: column-reverse;
+    }
+
+    .p-left-70 {
+        padding-left: 0;
+    }
+
+    .page-info-blog p {
+        font-size: 14px;
+    }
+
+    .page-info-blog p:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    .right-img-container {
+        margin-top: 40px;
+    }
+
+    .banner-btm-area {
+        margin-top: 40px;
+    }
+
+    .banner-container {
+        top: 70%;
+        -ms-transform: translateY(-70%);
+        transform: translateY(-70%);
+    }
+
+    .banner-btm-area .row {
+        padding: 0;
+    }
+
+    .login-area {
+        display: none;
+    }
+
+    .site-menu-mobile .login-area {
+        display: block;
+    }
+
+    .site-menu-mobile .login-area li {
+        border: 0;
+        padding: 0;
+    }
+
+    .site-menu-mobile .login-area {
+        padding: 15px;
+        display: flex !important;
+        justify-content: space-between;
+        min-width: 300px;
+    }
+
+    .loginsignup {
+        margin-right: 13px;
+    }
+
+    .with-us-rp {
+        max-width: 100%;
+    }
+
+    .with-us-rp:after {
+        width: 8rem;
+        right: 10px;
+    }
+
+    .list-reason:nth-child(2) .with-us-rp:after,
+    .list-reason:nth-child(4) .with-us-rp:after {
+        left: 10px;
+    }
+
+    .support-apps-sec {
+        padding: 40px;
+    }
+
+    .support-logo-box figure img {
+        max-width: 100%;
+    }
+
+    .support-logo-box figure img {
+        padding: 0px;
+    }
+
+    .video-box {
+        position: relative;
+        width: 100%;
+        left: 0%;
+        top: 0%;
+        transform: translateY(0%) translateX(0%);
+        margin-bottom: 40px;
+    }
+
+    .list-reason p {
+        max-width: 95%;
+        font-size: 14px;
+    }
+
+    .banner-btm-bx {
+        margin-bottom: 30px;
+    }
+
+    .run-with-us {
+        padding: 30px 0 40px;
+    }
+
+    .section-head {
+        padding-bottom: 40px;
+    }
+
+    .run-with-us-wrp {
+        margin-top: 0;
+    }
+
+    .with-us-rp h3 {
+        font-size: 20px;
+    }
+
+    .bk-icon img {
+        max-height: 70px;
+    }
+
+    .nws-form {
+        margin-top: 30px;
+    }
+
+    .gallery-item {
+        flex: 28.44%;
+    }
+
+    .gallery-item.big-width.flex-2 {
+        flex: 59.2%;
+    }
+}
+
+@media (max-width: 575px) {
+    .dash-badges-sec {
+        padding-bottom: 0;
+    }
+
+    .add-log-options .nav-tabs .nav-link {
+        min-width: 135px;
+        font-size: 14px;
+        min-height: 40px;
+        line-height: 40px;
+    }
+
+    #home-tab {
+        margin-right: 15px;
+    }
+
+    .cupid-row.four-box .cupid-product-bx {
+        margin: auto !important;
+        width: 100%;
+    }
+
+    .cupid-row.four-box .cupid-product-bx:not(:last-child) {
+        margin-bottom: 25px !important;
+    }
+
+    .text-sub,
+    .item-info-text span {
+        font-size: 14px;
+    }
+
+    .price-sub,
+    .card-item-price {
+        font-size: 16px;
+    }
+
+    .card-main-wrp {
+        padding: 15px;
+    }
+
+    .card-product-listing h5 {
+        margin-bottom: 15px;
+    }
+
+    .item-info-text {
+        padding-left: 15px;
+    }
+
+    .alert.alert-info {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .tab-main-row fieldset {
+        padding-bottom: 40px;
+    }
+
+    .credit-debit-btn {
+        width: 160px;
+        height: 45px;
+    }
+
+    .confirmation-tab h3 {
+        font-size: 20px;
+    }
+
+    .brows-mr-ch {
+        padding: 0 30px !important;
+        margin-top: 0;
+    }
+
+    .confirmation-tab p {
+        font-size: 14px;
+    }
+
+    #msform fieldset .mb-45 {
+        margin-bottom: 35px;
+    }
+
+    .register-tab .form-group {
+        margin-bottom: 1.3rem !important;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    ::placeholder {
+        font-size: 15px;
+    }
+
+    .step-no {
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .step:before,
+    .step:after {
+        top: 14px;
+    }
+
+    .step-text {
+        font-size: 11px;
+    }
+
+    .step-wrp-top {
+        margin-bottom: 45px;
+    }
+
+    .ch-details-banner .bg_img.inner-banner {
+        padding-top: 110%;
+    }
+
+    .banner-caption h1 br {
+        display: none;
+    }
+
+    .cupid-product-bx {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+    }
+
+    .cupid-product-bx:not(:last-child) {
+        margin-bottom: 25px;
+    }
+
+    .filter-area.d-flex {
+        align-items: center;
+    }
+
+    .filter-tag {
+        margin-right: 10px;
+        min-width: 102px;
+    }
+
+    .filter-tag:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    .challenge-heading {
+        min-height: inherit;
+    }
+
+    .challenge-bx {
+        width: 100%;
+        max-width: 355px;
+        float: none;
+        margin: auto !important;
+        margin-bottom: 35px !important;
+    }
+
+    .blue-btn,
+    .grey-btn {
+        min-width: 130px;
+        height: 45px;
+    }
+
+    .filter-area.d-flex {
+        display: block !important;
+    }
+
+    .filter-wrp-bx {
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .filter-area.d-flex {
+        margin-bottom: 30px;
+    }
+
+    .right-img-container,
+    .our-goal-box {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .our-goal-box {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .instagram-feed-wrp ul li {
+        width: calc(100% / 2);
+        margin-bottom: 15px;
+    }
+
+    .img-insta {
+        height: 195px;
+    }
+
+    .newletter-sec .btn.green-btn {
+        height: 50px;
+    }
+
+    .ftr-bx.logo-ftr p {
+        max-width: 100%;
+    }
+
+    .ftr-bx h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .ftr-bx {
+        margin-bottom: 35px;
+    }
+
+    .copyright.text-center {
+        margin-top: 0;
+    }
+
+    .site-footer {
+        padding: 40px 0 20px;
+    }
+
+    .newletter-sec .form-control {
+        height: 50px !important;
+        font-size: 14px;
+    }
+
+    .racing-gallery-grid {
+        display: block;
+    }
+
+    .gallery-item {
+        flex: 100%;
+        margin: 15px 0;
+    }
+
+    .gallery-item.big-h-1 figure.gallery-img {
+        width: 296px !important;
+        margin: auto;
+        height: 500px;
+        position: relative;
+    }
+
+    .section-head {
+        padding-bottom: 30px;
+    }
+
+    .challenges-sec .section-head {
+        padding-bottom: 15px;
+    }
+
+    .grid-left figure.gallery-img {
+        height: 315px !important;
+        width: 296px !important;
+        margin: auto;
+    }
+
+    .gallery-item.big-width.flex-2 figure.gallery-img {
+        height: 154px !important;
+    }
+
+    .gallery-item.big-h-1 {
+        text-align: center;
+    }
+
+    .how-it-work-bx h3 {
+        font-size: 20px;
+    }
+
+    .gallery-row figcaption {
+        left: 10px;
+    }
+
+    .green-btn.find-race,
+    .green-btn.moreabout,
+    .register-now-btn a {
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .list-reason {
+        width: 100%;
+    }
+
+    .howit-work-sec .section-head {
+        padding-bottom: 35px;
+    }
+
+    .count-step {
+        font-size: 115px;
+        top: -1px;
+        left: 0;
+        right: 0;
+    }
+
+    .how-it-work-bx {
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .how-it-work-bx p {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .bg-img.home-banner {
+        padding-top: 76%;
+    }
+
+    .site-header .navbar-brand img {
+        max-width: 165px;
+    }
+
+    .site-header .login-area a {
+        font-size: 12px;
+    }
+
+    .banner-caption h1 {
+        font-size: 35px;
+    }
+
+    .banner-caption h1 span {
+        font-size: 40px;
+    }
+
+    .green-btn.find-race {
+        width: 170px;
+        height: 50px;
+        line-height: 50px;
+        margin-top: 0;
+    }
+
+    .join-challenge-btn,
+    .site-header .loginsignup {
+        width: 140px;
+        height: 41px;
+    }
+
+    .site-header .sep {
+        font-size: 14px;
+        margin: 0 2px;
+    }
+
+    .site-header .loginsignup .material-icons-outlined {
+        vertical-align: middle;
+        font-size: 16px;
+    }
+
+    .login-area {
+        margin: 0;
+        margin-right: 30px;
+    }
+
+    .list-reason p {
+        font-size: 13px;
+    }
+
+    .newletter-sec .form-group.input {
+        margin-right: 15px;
+    }
+
+    .capable-wrp .section-head p {
+        font-size: 14px;
+    }
+
+    .Capable-sec .bg-img {
+        padding-top: 90%;
+    }
+
+    .newletter-sec .form-control {
+        font-size: 16px;
+    }
+
+    .newletter-sec,
+    .challenges-sec {
+        padding: 40px 0;
+    }
+
+    .howit-work-sec {
+        padding: 40px 0 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    .manage-device-box {
+        width: 100%;
+        margin-right: 0 !important;
+        float: none;
+        margin-bottom: 40px !important;
+    }
+
+    .manage-device-box:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .location-mark,
+    .location-mark span {
+        display: block !important;
+    }
+
+    .item-location {
+        margin: 10px 0 0;
+    }
+
+    .ch-details-banner .bg_img.inner-banner {
+        padding-top: 120%;
+    }
+
+    .instagram-feed-wrp ul li {
+        width: 100%;
+        float: none;
+        margin-bottom: 15px;
+    }
+
+    .img-insta {
+        height: 255px;
+    }
+
+    .site-header .navbar-brand img {
+        max-width: 165px;
+    }
+
+    .newletter-sec .btn.green-btn {
+        font-size: 14px;
+        width: 135px;
+        height: 50px;
+    }
+
+    .newletter-sec .form-control {
+        font-size: 14px;
+    }
+
+    .nws-wrp {
+        flex-direction: column;
+    }
+
+    .Capable-sec .bg-img {
+        padding-top: 133%;
+    }
+
+    .capable-wrp .site-heading br {
+        display: none;
+    }
+
+    .site-heading {
+        font-size: 26px;
+    }
+
+    .bg-img.home-banner {
+        padding-top: 96%;
+    }
+
+    .banner-caption h1 {
+        font-size: 30px;
+    }
+
+    .banner-caption h1 span {
+        font-size: 34px;
+    }
+
+    .grey-circle {
+        width: 290px;
+        height: 290px;
+    }
+
+    .grey-circle-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .video-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .count {
+        font-size: 50px;
+        top: -20px;
+    }
+}
+
+@media (max-width: 350px) {
+    .step-text {
+        font-size: 8px;
+    }
+}
+
