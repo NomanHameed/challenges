@@ -45,7 +45,7 @@ class User extends Authenticatable
         return $this->belongsToMany(
             Challenges::class,
             'user_challenges',
-        'id',
+        'user_id',
             'challenge_id');
     }
 
